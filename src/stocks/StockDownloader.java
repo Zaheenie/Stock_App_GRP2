@@ -45,10 +45,42 @@ public class StockDownloader {
 			System.out.println("volume: "+obj_date.getString("5. volume"));
 			
 			
+			// *** new stuff, storing the values
+			//
+			this.open = obj_date.getString("1. open");
+			this.high = obj_date.getString("2. high");
+			this.low = obj_date.getString("3. low");
+			this.close = obj_date.getString("4. close");
+			this.volume = obj_date.getString("5. volume");
+			//		
+			// *** end of value storing
+			
+			
 		} catch (Exception e){
 			e.printStackTrace();
 		}
 		
 	}
+	
+	// *** new Getter methods
+	//
+	public String getOpen() {return this.open;}
+	public String getHigh() {return this.high;}
+	public String getLow() {return this.low;}
+	public String getClose() {return this.close;}
+	public String getVolume() {return this.volume;}
+	//
+	// *** end of Getter methods
+	
+	
+	// *** new instance variables
+	//
+	private String open;
+	private String high;
+	private String low;
+	private String close;
+	private String volume;
+	//
+	// *** end of instance variables
 	
 }
