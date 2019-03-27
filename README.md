@@ -6,10 +6,11 @@ BOIANGU, ETHAN
 CHEN, STANLEY
 JANG, KAYDEN
 
-Project Scope: The purpose of the Stock Price Application is to have daily updated data and to parse through it in a convenient and easy-to-use application for users trying to buy, check and compare prices. Features will include searching through prices and company names, comparing stock prices, viewing price history, and graphs using stock prices all in a friendly, easy to use graphical interface.
+# Project Scope: 
+The purpose of the Stock Price Application is to have daily updated data and to parse through it in a convenient and easy-to-use application for users trying to buy, check and compare prices. Features will include searching through prices and company names, comparing stock prices, viewing price history, and graphs using stock prices all in a friendly, easy to use graphical interface.
 
 
-Features:
+# Features:
 -Stock Prices Search
 As a Day Trader, I want to search stock prices so that I can determine who to buy and sell to.
 
@@ -30,7 +31,7 @@ As a Global Account Manager, I want to be able to see stock prices with a visual
 
 ********************************************************************************************************************************************
 
-Project Log
+# Project Log
 commit a6741e691db183f349afc57569971f512376326d (HEAD -> master, origin/master)
 Author: KKjang17 <48634089+KKjang17@users.noreply.github.com>
 Date:   Tue Mar 26 17:56:51 2019 -0400
