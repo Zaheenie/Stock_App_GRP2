@@ -28,6 +28,8 @@ public class UserInterface extends Application{
 	public GridPane displayStockInfo(String symbol) {
 		
 		StockDownloader currentStock = new StockDownloader(symbol);
+		NameSearchDownloader currentStockPlus = new NameSearchDownloader(symbol);
+		
 		final int FONTSIZE1 = 20;
 		
 		GridPane display = new GridPane();
@@ -36,8 +38,20 @@ public class UserInterface extends Application{
 	    display.setVgap(10);
 	    display.setPadding(new Insets(0, 10, 0, 10));
 	    
+	    // *** Text ***     Displays Information about the company	    
+	    Text name = new Text(currentStockPlus.getName()+" (" + currentStockPlus.getSymbol() + ")");
+	    name.setFont(Font.font("Arial", FONTSIZE1 ));
+	    display.add(name, 15, 6);
 	    
-			   
+	    Text region = new Text(currentStockPlus.getRegion());
+	    region.setFont(Font.font("Arial", FONTSIZE1 ));
+	    display.add(region, 15, 7);
+	    
+	    Text currency = new Text("Currency in " + currentStockPlus.getCurrency());
+	    currency.setFont(Font.font("Arial", FONTSIZE1 ));
+	    display.add(currency, 15, 8);
+		
+	    
 	    // *** Text ***		Retrieves the instance variables from the stock
 	    //
 	    Text open = new Text("Open : " + currentStock.getOpen());
@@ -55,11 +69,11 @@ public class UserInterface extends Application{
 	    
 	    Text close = new Text("Close : " + currentStock.getClose());
 	    close.setFont(Font.font("Arial", FONTSIZE1));
-	    display.add(close, 25, 10); 
+	    display.add(close, 20, 10); 
 	    
 	    Text volume = new Text("Volume : " + currentStock.getVolume());
 	    volume.setFont(Font.font("Arial", FONTSIZE1));
-	    display.add(volume, 25, 15); 
+	    display.add(volume, 20, 15); 
 	    //
 	    // *** Text ****
 	    
