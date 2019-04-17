@@ -3,8 +3,10 @@ package stocks;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -24,7 +26,7 @@ public class UserInterface extends Application{
 				
 	}
 
-	
+/*	
 	public GridPane displayStockInfo(String symbol) {
 		
 		StockDownloader currentStock = new StockDownloader(symbol);
@@ -79,12 +81,12 @@ public class UserInterface extends Application{
 	    
 	    
 		return display;
-	}
+	}*/
 	
 	@Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("StockApp Plus");
-        
+       /* 
         BorderPane root = new BorderPane();
         
         
@@ -106,11 +108,27 @@ public class UserInterface extends Application{
         //
         //*** Search bar end ***
         
+       */
         
-        Scene scene = new Scene(root, 800, 500);
-               
-        primaryStage.setScene(scene);
-        primaryStage.show();
+       // Scene scene = new Scene(root, 800, 500);
+        try {
+        	
+        	FXMLLoader loader = new FXMLLoader();
+        	loader.setLocation(getClass().getResource("ui.fxml"));
+        	
+        	Parent content = loader.load();
+        	Scene scene = new Scene(content);
+        	
+        	primaryStage.setScene(scene);
+            primaryStage.show();
+        	
+        }
+        catch (Exception e) {
+        	
+        	e.printStackTrace();
+        }       
+  //      primaryStage.setScene(scene);
+ //       primaryStage.show();
 
     }
 
