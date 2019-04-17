@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stocks.MainController">
+  <children>
+    <VBox layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="198.0" styleClass="dashboard" stylesheets="@../git/Stock_App_GRP2new/src/stocks/stylesheet.css">
+      <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="198.0" text="Main menu" textAlignment="LEFT">
+          <font>
+            <Font size="16.0" />
+          </font>
+        </Label>
+        <HBox prefHeight="31.0" prefWidth="198.0">
+          <children>
+            <TextField fx:id="symbolField" alignment="CENTER" prefHeight="31.0" prefWidth="143.0" text="Symbol" />
+            <Button mnemonicParsing="false" onAction="#searchSymbol" prefHeight="31.0" prefWidth="63.0" text="Search" />
+          </children>
+        </HBox>
+        <Button mnemonicParsing="false" onAction="#graphButton" prefHeight="31.0" prefWidth="216.0" text="Graph" />
+      </children>
+    </VBox>
+      <VBox layoutX="198.0" prefHeight="400.0" prefWidth="405.0">
+         <children>
+            <GridPane fx:id="companyNameLabel" prefHeight="407.0" prefWidth="405.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="91.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="314.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label prefHeight="42.0" prefWidth="203.0" />
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="199.0" text="Name">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="42.0" prefWidth="203.0" />
+                        <Label fx:id="regionLabel" alignment="CENTER" prefHeight="30.0" prefWidth="203.0" text="Region">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="311.0" />
+                        <Text fx:id="companyName" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="312.13671875">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Label prefHeight="46.0" prefWidth="311.0" />
+                        <Text fx:id="region" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.13671875">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label prefHeight="7.0" prefWidth="314.0" />
+                        <Label fx:id="currencyLabel" alignment="CENTER" prefHeight="37.0" prefWidth="91.0" text="Currency">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="91.0" text="Open">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="91.0" text="High">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label prefHeight="22.0" prefWidth="314.0" />
+                        <Text fx:id="currency" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.13671875">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="stockOpen" prefHeight="50.0" prefWidth="311.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="stockHigh" prefHeight="36.0" prefWidth="311.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="91.0" text="Low">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="91.0" text="Close">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="91.0" text="Volume">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label fx:id="stockLow" prefHeight="42.0" prefWidth="311.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="stockClose" prefHeight="45.0" prefWidth="314.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="stockVolume" prefHeight="45.0" prefWidth="310.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+  </children>
+</AnchorPane>
