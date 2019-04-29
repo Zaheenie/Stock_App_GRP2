@@ -108,7 +108,7 @@ public class MainController {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("graphScreen.fxml"));
         	Parent graphScreen = loader.load();
-			
+        	MainController controller = (MainController) loader.getController();
         	
         	Scene graphScene = new Scene(graphScreen);
         	
@@ -126,39 +126,25 @@ public class MainController {
     }
 
 	//calls CompareStocks***************************
+	
 	@FXML
     void compareStocksButton(ActionEvent event) {
 		
-		/*********
-		 * I saw this part on youtube to see if it worked, it didn't
-		try {
-			Parent compareScreen = FXMLoader.load(getClass().getResource("compareStock.fxml"));
-			
-			Scene compareScene = new Scene(compareScreen);
-			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			
-		}		
-		catch (Exception e) {        	
-        	e.printStackTrace();
-        }
-		**********/
-		
-		try {
+		try {       	
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStock.fxml"));
         	Parent compareScreen = loader.load();
-			
-        	
+            
+        	MainController controller = (MainController) loader.getController();
+        	        	
         	Scene compareScene = new Scene(compareScreen);
         	
         	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
         	
         	window.setScene(compareScene);
         	window.show();
-        	
-		}
-		
-		catch (Exception e) {
-        	
+      
+        }		
+		catch (Exception e) {        	
         	e.printStackTrace();
         }             
     }

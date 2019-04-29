@@ -14,8 +14,7 @@ public class CompareTwoStocks{
 
 	@Override
     public void start(Stage primaryStage) {
-              
-      
+		//TODO ??
 
     }
 	
@@ -56,5 +55,6 @@ public class CompareTwoStocks{
 	//if openPrice1 > opnPrice2 
 	//	make the number green and the other red
 	//	repeat for the next 4 variables
+	//show on app gui
 		
 }
