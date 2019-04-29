@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
 
 
 public class MainController {
-	//nw
+	//new
 
 	 @FXML
 	 private TextField symbolField;
@@ -79,19 +79,12 @@ public class MainController {
         	
         	//Displays the Stock information
         	controller.companyName.setText(currentStockPlus.getName() + " (" + currentStockPlus.getSymbol() + ")");
-        	
-        	controller.region.setText(currentStockPlus.getRegion());
-        	
-        	controller.currency.setText(currentStockPlus.getCurrency());
-        	
-        	controller.stockOpen.setText(currentStock.getOpen());
-        	
-        	controller.stockHigh.setText(currentStock.getHigh());
-        	
-        	controller.stockLow.setText(currentStock.getLow());
-        	
-        	controller.stockClose.setText(currentStock.getClose());
-        	
+        	controller.region.setText(currentStockPlus.getRegion());        	
+        	controller.currency.setText(currentStockPlus.getCurrency());        	
+        	controller.stockOpen.setText(currentStock.getOpen());        	
+        	controller.stockHigh.setText(currentStock.getHigh());        	
+        	controller.stockLow.setText(currentStock.getLow());        	
+        	controller.stockClose.setText(currentStock.getClose());        	
         	controller.stockVolume.setText(currentStock.getVolume());       	
         	// Display end
         	
@@ -132,8 +125,46 @@ public class MainController {
         }       
     }
 
+	//calls CompareStocks***************************
+	@FXML
+    void compareStocksButton(ActionEvent event) {
+		
+		/*********
+		 * I saw this part on youtube to see if it worked, it didn't
+		try {
+			Parent compareScreen = FXMLoader.load(getClass().getResource("compareStock.fxml"));
+			
+			Scene compareScene = new Scene(compareScreen);
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			
+		}		
+		catch (Exception e) {        	
+        	e.printStackTrace();
+        }
+		**********/
+		
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStock.fxml"));
+        	Parent compareScreen = loader.load();
+			
+        	
+        	Scene compareScene = new Scene(compareScreen);
+        	
+        	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        	
+        	window.setScene(compareScene);
+        	window.show();
+        	
+		}
+		
+		catch (Exception e) {
+        	
+        	e.printStackTrace();
+        }             
+    }
 	
-	//new
+	
+	//new**********************************************
 	
 	
 	@FXML LineChart<String, Number> lineChart;
