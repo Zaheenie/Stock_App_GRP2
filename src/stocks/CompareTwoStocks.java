@@ -51,5 +51,10 @@ public class CompareTwoStocks{
 		float closePrice2 = Float.parseFloat(stock2.getClose());
 		float volume2 = Float.parseFloat(stock2.getVolume());
 	}
+	
+	//PSUEDOCODE
+	//if openPrice1 > opnPrice2 
+	//	make the number green and the other red
+	//	repeat for the next 4 variables
 		
 }
