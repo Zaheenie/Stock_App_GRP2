@@ -125,13 +125,12 @@ public class MainController {
         }       
     }
 
-	//calls CompareStocks***************************
-	
+	//calls CompareStocks	
 	@FXML
     void compareStocksButton(ActionEvent event) {
 		
 		try {       	
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStock.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStocks.fxml"));
         	Parent compareScreen = loader.load();
             
         	MainController controller = (MainController) loader.getController();
@@ -150,11 +149,11 @@ public class MainController {
     }
 	
 	
-	//new**********************************************
+	@FXML 
+	LineChart<String, Number> lineChart;
 	
-	
-	@FXML LineChart<String, Number> lineChart;
-	@FXML Label lbl;
+	@FXML 
+	Label lbl;
 	
 	@FXML
 	private TextField userField1;
