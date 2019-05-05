@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stocks.MainController">
+  <children>
+    <VBox layoutX="0.0" layoutY="0.0" prefHeight="462.0" prefWidth="198.0" style="-fx-background-color: #B0E0E6;">
+      <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="198.0" text="Main menu" textAlignment="LEFT">
+          <font>
+            <Font size="16.0" />
+          </font>
+        </Label>
+        <HBox prefHeight="31.0" prefWidth="198.0">
+          <children>
+            <TextField fx:id="symbolField" alignment="CENTER" prefHeight="31.0" prefWidth="143.0" promptText="Enter Symbol" />
+            <Button mnemonicParsing="false" onAction="#searchSymbol" prefHeight="31.0" prefWidth="63.0" text="Search">
+                     <font>
+                        <Font size="9.0" />
+                     </font></Button>
+          </children>
+        </HBox>
+        <Button mnemonicParsing="false" onAction="#graphButton" prefHeight="31.0" prefWidth="216.0" text="Graph" />
+            <Button mnemonicParsing="false" onAction="#priceHistoryButton" prefHeight="31.0" prefWidth="216.0" text="Price History" />
+      </children>
+    </VBox>
+      <VBox layoutX="198.0" prefHeight="462.0" prefWidth="479.0">
+         <children>
+            <HBox prefHeight="92.0" prefWidth="479.0">
+               <children>
+                  <Label prefHeight="105.0" prefWidth="273.0" style="-fx-background-color: #DCDCDC;" />
+                  <VBox prefHeight="92.0" prefWidth="195.0" style="-fx-background-color: #DCDCDC;">
+                     <children>
+                        <Label prefHeight="1.0" prefWidth="195.0" />
+                        <HBox prefHeight="38.0" prefWidth="195.0">
+                           <children>
+                              <TextField fx:id="symbolField2" alignment="CENTER" prefHeight="38.0" prefWidth="135.0" promptText="Enter Symbol" />
+                              <Button mnemonicParsing="false" onAction="#showHistory" prefHeight="38.0" prefWidth="60.0" text="Load" />
+                           </children>
+                        </HBox>
+                        <Label prefHeight="17.0" prefWidth="203.0" />
+                        <ComboBox prefHeight="25.0" prefWidth="195.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="479.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="32.0" prefWidth="77.8" text="Date" />
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="77.8" text="Open" />
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="77.8" text="High" />
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="77.8" text="Low" />
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="77.8" text="Close" />
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="77.8" text="Volume" />
+               </children>
+            </HBox>
+            <HBox fx:id="row1" prefHeight="32.0" prefWidth="479.0" />
+            <HBox fx:id="row2" prefHeight="14.0" prefWidth="479.0" />
+            <HBox fx:id="row3" prefHeight="32.0" prefWidth="479.0" />
+            <HBox fx:id="row4" prefHeight="14.0" prefWidth="479.0" />
+            <HBox fx:id="row5" prefHeight="32.0" prefWidth="479.0" />
+            <HBox fx:id="row6" prefHeight="14.0" prefWidth="479.0" />
+            <HBox fx:id="row7" prefHeight="32.0" prefWidth="479.0" />
+            <HBox fx:id="row8" prefHeight="14.0" prefWidth="479.0" />
+            <HBox fx:id="row9" prefHeight="32.0" prefWidth="479.0" />
+            <HBox fx:id="row10" prefHeight="14.0" prefWidth="479.0" />
+            <HBox fx:id="row11" prefHeight="32.0" prefWidth="479.0" />
+            <HBox fx:id="row12" prefHeight="14.0" prefWidth="479.0" />
+            <HBox fx:id="row13" prefHeight="32.0" prefWidth="479.0" />
+         </children>
+      </VBox>
+  </children>
+</AnchorPane>

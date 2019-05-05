@@ -20,20 +20,18 @@ import javafx.stage.Stage;
 
 public class UserInterface extends Application{
 	
-	public static void main(String [] args) {
-		
-		launch(args);
-				
+	public static void main(String [] args) {		
+		launch(args);				
 	}
 
 	@Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("StockApp Plus");
-      
+     
         try {
         	
         	FXMLLoader loader = new FXMLLoader();
-        	loader.setLocation(getClass().getResource("ui.fxml"));
+        	loader.setLocation(getClass().getResource("StartingScreen.fxml"));
         	
         	Parent content = loader.load();
         	Scene scene = new Scene(content);
