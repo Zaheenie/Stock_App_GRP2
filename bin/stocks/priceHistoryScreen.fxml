@@ -12,11 +12,12 @@
   <children>
     <VBox layoutX="0.0" layoutY="0.0" prefHeight="462.0" prefWidth="198.0" style="-fx-background-color: #B0E0E6;">
       <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="198.0" text="Main menu" textAlignment="LEFT">
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="198.0" text="StockApp Plus" textAlignment="LEFT">
           <font>
-            <Font size="16.0" />
+            <Font size="24.0" />
           </font>
         </Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Main Menu" textAlignment="CENTER" wrappingWidth="198.498046875" x="5.0" />
         <HBox prefHeight="31.0" prefWidth="198.0">
           <children>
             <TextField fx:id="symbolField" alignment="CENTER" prefHeight="31.0" prefWidth="143.0" promptText="Enter Symbol" />

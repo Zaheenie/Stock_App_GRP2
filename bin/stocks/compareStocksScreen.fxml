@@ -19,31 +19,59 @@
       <VBox layoutX="208.0" layoutY="48.0" prefHeight="412.0" prefWidth="470.0">
          <children>
             <SplitPane dividerPositions="0.5" prefHeight="412.0" prefWidth="470.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="389.0" prefWidth="237.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="389.0" prefWidth="237.0">
                      <children>
-                        <Button layoutX="176.0" layoutY="14.0" mnemonicParsing="false" text="Search" />
-                        <TextField fx:id="compareField1" layoutX="24.0" layoutY="14.0" />
+                        <TextField fx:id="comp1" layoutX="24.0" layoutY="14.0" prefHeight="25.0" prefWidth="189.0" />
+                        <Text layoutX="13.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Region" />
+                        <Text layoutX="13.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Currency" />
+                        <Text layoutX="13.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Open" />
+                        <Text layoutX="13.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High" />
+                        <Text layoutX="13.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Low" />
+                        <Text layoutX="13.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Close" />
+                        <Text layoutX="13.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" />
+                        <Text fx:id="region1" layoutX="69.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="currency1" layoutX="69.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="open1" layoutX="69.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="high1" layoutX="69.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="low1" layoutX="69.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="close1" layoutX="69.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="volume1" layoutX="69.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="compName1" layoutX="105.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <Button layoutX="176.0" layoutY="14.0" mnemonicParsing="false" text="Search" />
-                        <TextField fx:id="comapreField2" layoutX="24.0" layoutY="14.0" />
+                        <TextField fx:id="comp2" layoutX="24.0" layoutY="14.0" prefHeight="25.0" prefWidth="189.0" />
+                        <Text layoutX="13.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Region" />
+                        <Text layoutX="13.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Currnecy" />
+                        <Text layoutX="13.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Open" />
+                        <Text layoutX="13.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High" />
+                        <Text layoutX="13.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Low" />
+                        <Text layoutX="13.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Close" />
+                        <Text layoutX="13.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" />
+                        <Text fx:id="volume2" layoutX="69.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="close2" layoutX="69.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="low2" layoutX="69.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="high2" layoutX="69.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="open2" layoutX="69.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="currency2" layoutX="69.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="region2" layoutX="69.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
+                        <Text fx:id="compName2" layoutX="105.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </AnchorPane>
-              </items>
+               </items>
             </SplitPane>
          </children>
       </VBox>
-      <Text layoutX="305.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the company ticker symbol below to compare." />
       <VBox prefHeight="461.0" prefWidth="198.0" style="-fx-background-color: #B0E0E6;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="198.0" text="Main menu" textAlignment="LEFT">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="198.0" text="StockApp Plus" textAlignment="LEFT">
                <font>
-                  <Font size="16.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Main Menu" textAlignment="CENTER" wrappingWidth="198.498046875" x="5.0" />
             <HBox prefHeight="31.0" prefWidth="198.0">
                <children>
                   <TextField fx:id="symbolField" alignment="CENTER" prefHeight="31.0" prefWidth="143.0" promptText="Enter Symbol" />
@@ -58,5 +86,7 @@
             <Button mnemonicParsing="false" onAction="#compareStocksButton" prefHeight="31.0" prefWidth="216.0" text="Compare Stocks" />
          </children>
       </VBox>
+      <Text layoutX="268.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the company ticker symbol below to compare then click " />
+      <Button layoutX="604.0" layoutY="18.0" mnemonicParsing="false" onAction="#buttonCompare" text="Search" />
    </children>
 </AnchorPane>
