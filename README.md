@@ -1,8 +1,8 @@
 # Stock_App_GRP2
 Software Engineering CISC 3171 Spring 2019
 
-SCRUM Master: HASAN, ZAHEEN
-BOIANGU, ETHAN
+SCRUM Master: HASAN, ZAHEEN |
+BOIANGU, ETHAN |
 JANG, KAYDEN
 
 # Project Scope: 
