@@ -41,8 +41,7 @@ public class MainController extends Application{
     public void start(Stage primaryStage) {
         primaryStage.setTitle("StockApp Plus");
      
-        try {
-        	
+        try {       	
         	FXMLLoader loader = new FXMLLoader();
         	loader.setLocation(getClass().getResource("stockSearchScreen.fxml"));
         	
@@ -50,14 +49,12 @@ public class MainController extends Application{
         	Scene scene = new Scene(content);
         	
         	primaryStage.setScene(scene);
-            primaryStage.show();
-        	
+            primaryStage.show();        	
         }
         catch (Exception e) {
         	
         	e.printStackTrace();
         }       
-
     }
 
 
@@ -145,59 +142,59 @@ public class MainController extends Application{
 	 @FXML
 	 private HBox row13;
 	 
-		@FXML
-	    private TextField comp1;
+	 @FXML
+	 private TextField comp1;
 
-	    @FXML
-	    private Text region1;
+	 @FXML
+	 private Text region1;
 
-	    @FXML
-	    private Text currency1;
+	 @FXML
+	 private Text currency1;
+	 
+	 @FXML
+	 private Text open1;
 
-	    @FXML
-	    private Text open1;
+	 @FXML
+	 private Text high1;
 
-	    @FXML
-	    private Text high1;
+	 @FXML
+	 private Text low1;
 
-	    @FXML
-	    private Text low1;
+	 @FXML
+	 private Text close1;
 
-	    @FXML
-	    private Text close1;
+	 @FXML
+	 private Text volume1;
 
-	    @FXML
-	    private Text volume1;
+	 @FXML
+	 private Text compName1;
 
-	    @FXML
-	    private Text compName1;
+	 @FXML
+	 private TextField comp2;
 
-	    @FXML
-	    private TextField comp2;
+	 @FXML
+	 private Text volume2;
 
-	    @FXML
-	    private Text volume2;
+	 @FXML
+	 private Text close2;
 
-	    @FXML
-	    private Text close2;
+	 @FXML
+	 private Text low2;
 
-	    @FXML
-	    private Text low2;
+	 @FXML
+	 private Text high2;
 
-	    @FXML
-	    private Text high2;
+	 @FXML
+	 private Text open2;
 
-	    @FXML
-	    private Text open2;
+	 @FXML
+	 private Text currency2;
 
-	    @FXML
-	    private Text currency2;
+	 @FXML
+	 private Text region2;
 
-	    @FXML
-	    private Text region2;
-
-	    @FXML
-	    private Text compName2;
+	 @FXML
+	 private Text compName2;
 	   
 	 // *** End of private variables
 	 
@@ -209,15 +206,12 @@ public class MainController extends Application{
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStocksScreen.fxml"));
 	        	Parent compareScreen = loader.load();
 	            
-	        	MainController controller = (MainController) loader.getController();
-	        	        	
-	        	Scene compareScene = new Scene(compareScreen);
-	        	
+	        	MainController controller = (MainController) loader.getController();	        	        	
+	        	Scene compareScene = new Scene(compareScreen);	        	
 	        	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
 	        	
 	        	window.setScene(compareScene);
-	        	window.show();
-	      
+	        	window.show();	      
 	        }		
 			catch (Exception e) {        	
 	        	e.printStackTrace();
@@ -267,34 +261,25 @@ public class MainController extends Application{
         	MainController controller = (MainController) loader.getController();
         	
         	//Displays the Stock information
-        	controller.companyName.setText(currentStockPlus.getName() + " (" + currentStockPlus.getSymbol() + ")");
-        	
-        	controller.region.setText(currentStockPlus.getRegion());
-        	
-        	controller.currency.setText(currentStockPlus.getCurrency());
-        	
-        	controller.stockOpen.setText(currentStock.getOpen());
-        	
-        	controller.stockHigh.setText(currentStock.getHigh());
-        	
-        	controller.stockLow.setText(currentStock.getLow());
-        	
-        	controller.stockClose.setText(currentStock.getClose());
-        	
+        	controller.companyName.setText(currentStockPlus.getName() + " (" + currentStockPlus.getSymbol() + ")");       	
+        	controller.region.setText(currentStockPlus.getRegion());        	
+        	controller.currency.setText(currentStockPlus.getCurrency());       	
+        	controller.stockOpen.setText(currentStock.getOpen());       	
+        	controller.stockHigh.setText(currentStock.getHigh());       	
+        	controller.stockLow.setText(currentStock.getLow());        	
+        	controller.stockClose.setText(currentStock.getClose());       	
         	controller.stockVolume.setText(currentStock.getVolume());       	
         	
         	// Display end
         	
-        	Scene stockScene = new Scene(stockScreen);
-        	
+        	Scene stockScene = new Scene(stockScreen);        	
         	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
         	
         	window.setScene(stockScene);
         	window.show();
         	
         }
-        catch (Exception e) {
-        	
+        catch (Exception e) {        	
         	e.printStackTrace();
         }       
 	}
@@ -315,8 +300,7 @@ public class MainController extends Application{
         	
         	window.setScene(histScene);
         	window.show();
-		}
-		
+		}		
 		catch (Exception e) {
         	
         	e.printStackTrace();
@@ -350,7 +334,7 @@ public class MainController extends Application{
 				rowLabels[j].setFont(new Font("Arial", 12));				
 				oddRows[i].getChildren().add(rowLabels[j]);
 			}			
-		}
+		}	
 		
 		for (int i = 0; i < 6; i++) {
 			
@@ -404,8 +388,7 @@ public class MainController extends Application{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("graphScreen.fxml"));
         	Parent graphScreen = loader.load();			
         	
-        	Scene graphScene = new Scene(graphScreen);
-        	
+        	Scene graphScene = new Scene(graphScreen);       	
         	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
         	
         	window.setScene(graphScene);
@@ -413,8 +396,7 @@ public class MainController extends Application{
         	
 		}
 		
-		catch (Exception e) {
-        	
+		catch (Exception e) {        	
         	e.printStackTrace();
         }       
     }
@@ -423,8 +405,11 @@ public class MainController extends Application{
 	//new
 	
 	
-	@FXML LineChart<String, Number> lineChart;
-	@FXML Label lbl;
+	@FXML 
+	LineChart<String, Number> lineChart;
+	
+	@FXML 
+	Label lbl;
 	
 	@FXML
 	private TextField userField1;
@@ -458,8 +443,7 @@ public class MainController extends Application{
 		float lowPrice2 = Float.parseFloat(stock2.getLow());
 		float closePrice2 = Float.parseFloat(stock2.getClose());
 		float volume2 = Float.parseFloat(stock2.getVolume());
-		
-		
+				
 		
 		// Clear the chart legend
 		lineChart.getData().clear();
