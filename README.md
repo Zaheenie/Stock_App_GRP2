@@ -6,7 +6,7 @@ BOIANGU, ETHAN |
 JANG, KAYDEN
 
 # Project Scope: 
-The purpose of the Stock Price Application is to have daily updated data and to parse through it in a convenient and easy-to-use application for users trying to buy, check and compare prices. Features will include searching through prices and company names, comparing stock prices, viewing price history, and graphs using stock prices all in a friendly, easy to use graphical interface.
+The purpose of the StockApp Plus Application is to have daily updated data and to parse through it in a convenient and easy-to-use application for users trying to buy, check and compare prices. Features will include searching through prices and company names, comparing stock prices, viewing price history, and graphs using stock prices all in a friendly, easy to use graphical interface.
 
 
 # Features:
