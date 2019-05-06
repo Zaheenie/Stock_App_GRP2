@@ -20,8 +20,7 @@ public class StockDownloader {
 			Calendar cal = Calendar.getInstance();
 			Date date = new Date();	
 			
-			cal.setTime (date);
-			
+			cal.setTime (date);			
 			date = cal.getTime(); 
 			
 			// Uncomment the line below in order use the previous day instead of the current day.
@@ -38,8 +37,7 @@ public class StockDownloader {
 			date = cal.getTime(); 			
 			String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
 			
-			//Setting the date arrays
-			
+			//Setting the date arrays			
 			String [] dailyDates = new String [7];
 
 			int counter = 0;
@@ -85,11 +83,8 @@ public class StockDownloader {
 			JSONObject obj_timeSeries = obj_JSONObject.getJSONObject("Time Series (Daily)");
 			JSONObject obj_date = obj_timeSeries.getJSONObject(user_date);
 			
-			//
-			
 			//Setting values for price history
-			
-			
+					
 			JSONObject [] dateObjects = new JSONObject [7];
 			
 			for(int i = 0; i < 7; i++) {
@@ -104,22 +99,19 @@ public class StockDownloader {
 				dailyStockHistory[4][i] = dateObjects[i].getString("4. close");
 				dailyStockHistory[5][i] = dateObjects[i].getString("5. volume");							
 			}
+		
+			//Price history stuff end					
 
+			// *** Setting instance variables
 			
-			//Price history stuff end			
-			
-			// *** new stuff, storing the values
-			//
 			this.open = obj_date.getString("1. open");
 			this.high = obj_date.getString("2. high");
 			this.low = obj_date.getString("3. low");
 			this.close = obj_date.getString("4. close");
-			this.volume = obj_date.getString("5. volume");
-			//		
-			// *** end of value storing
+			this.volume = obj_date.getString("5. volume");		
 			
-			
-		} catch (Exception e){
+		} 
+		catch (Exception e){
 			e.printStackTrace();
 		}		
 	}
@@ -151,8 +143,7 @@ public class StockDownloader {
 	// *** end of instance variables
 	
 	private String [][] dailyStockHistory = new String[NUMBER_OF_COLUMNS][NUMBER_OF_ROWS]; 
-	private String [][] weeklyStockHistory = new String[NUMBER_OF_COLUMNS][NUMBER_OF_ROWS]; 
-	private String [][] monthlyStockHistory = new String[NUMBER_OF_COLUMNS][NUMBER_OF_ROWS]; 
-	
+//	private String [][] weeklyStockHistory = new String[NUMBER_OF_COLUMNS][NUMBER_OF_ROWS]; 
+//	private String [][] monthlyStockHistory = new String[NUMBER_OF_COLUMNS][NUMBER_OF_ROWS]; 	
 	
 }

@@ -37,7 +37,7 @@
                         <Text fx:id="low1" layoutX="69.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
                         <Text fx:id="close1" layoutX="69.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
                         <Text fx:id="volume1" layoutX="69.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
-                        <Text fx:id="compName1" layoutX="105.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fx:id="compName1" layoutX="13.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -57,7 +57,7 @@
                         <Text fx:id="open2" layoutX="69.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
                         <Text fx:id="currency2" layoutX="69.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
                         <Text fx:id="region2" layoutX="69.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.47008514404297" />
-                        <Text fx:id="compName2" layoutX="105.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fx:id="compName2" layoutX="13.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </AnchorPane>
                </items>

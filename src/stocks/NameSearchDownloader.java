@@ -11,8 +11,7 @@ import org.json.JSONObject;
 public class NameSearchDownloader {
 	
 	public NameSearchDownloader(String tick)
-	{
-		
+	{		
 		try{
 			final String num = "0:";
 			
@@ -22,15 +21,14 @@ public class NameSearchDownloader {
 			URLConnection urlConn = searchURL.openConnection();
 			InputStreamReader instream = new InputStreamReader(urlConn.getInputStream());
 			BufferedReader buff = new BufferedReader(instream);
-			StringBuffer response = new StringBuffer();
 			
-
+			StringBuffer response = new StringBuffer();			
 			String line;
+			
 			while((line = buff.readLine()) != null){
 				response.append(line);
 				
 			} buff.close();
-
 			
 			//making an JSON object for search endpoint to parse through the data
 			JSONObject searchOBJ = new JSONObject(response.toString());
@@ -46,29 +44,21 @@ public class NameSearchDownloader {
 			//		
 			// *** end of value storing
 			
-		} catch (Exception e){
+		} 
+		catch (Exception e){
 			e.printStackTrace();
-		}
-		
+		}		
 	}
-	
-	// *** new Getter methods
-		//
+		// *** Getter methods
 		public String getSymbol() {return this.tickerSymbol;}
 		public String getName() {return this.name;}
 		public String getRegion() {return this.region;}
 		public String getCurrency() {return this.currency;}
-		//
-		// *** end of Getter methods
 		
-		
-		// *** new instance variables
-		//
+		// *** Instance variables
 		private String tickerSymbol;
 		private String name;
 		private String region;
 		private String currency;
-		//
-		// *** end of instance variables
-		 
+
 }
