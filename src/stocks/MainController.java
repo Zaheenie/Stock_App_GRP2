@@ -72,7 +72,11 @@ public class MainController {
 	 @FXML
 	 private Label stockVolume;
 	 
-	 // **** Testing
+	 @FXML
+	 private TextField compareField1;
+		
+	 @FXML
+	 private TextField compareField2;
 	  
 	 @FXML
 	 private HBox row1;
@@ -113,9 +117,59 @@ public class MainController {
 	 @FXML
 	 private HBox row13;
 	   
-	 // *** Testing End 
-
-    
+	 // *** End of private variables
+	 
+	 
+	 @FXML
+	  void compareStocksButton(ActionEvent event) {
+			
+			try {       	
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStocksScreen.fxml"));
+	        	Parent compareScreen = loader.load();
+	            
+	        	MainController controller = (MainController) loader.getController();
+	        	        	
+	        	Scene compareScene = new Scene(compareScreen);
+	        	
+	        	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+	        	
+	        	window.setScene(compareScene);
+	        	window.show();
+	      
+	        }		
+			catch (Exception e) {        	
+	        	e.printStackTrace();
+	        }             
+	    }
+	
+	 /* Button not implemented yet
+	 @FXML
+	 void btn(ActionEvent event) {
+			
+		String stockInput1 = compareField1.getText();
+		String stockInput2 = compareField2.getText();
+			
+		// Get downloaded info for stock 1
+			
+		StockDownloader stock1 = new StockDownloader(stockInput1);
+			
+		float openPrice1 = Float.parseFloat(stock1.getOpen());
+		float highPrice1 = Float.parseFloat(stock1.getHigh());
+		float lowPrice1 = Float.parseFloat(stock1.getLow());
+		float closePrice1 = Float.parseFloat(stock1.getClose());
+		float volume1 = Float.parseFloat(stock1.getVolume());
+			
+		// Get downloaded info for stock 2
+			
+		StockDownloader stock2 = new StockDownloader(stockInput2);
+			
+		float openPrice2 = Float.parseFloat(stock2.getOpen());
+		float highPrice2 = Float.parseFloat(stock2.getHigh());
+		float lowPrice2 = Float.parseFloat(stock2.getLow());
+		float closePrice2 = Float.parseFloat(stock2.getClose());
+		float volume2 = Float.parseFloat(stock2.getVolume());
+	}
+    */
 	//Calls the search Screen
 	@FXML
 	void searchSymbol(ActionEvent event) {
