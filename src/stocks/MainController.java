@@ -3,6 +3,7 @@ package stocks;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,7 +31,34 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 
-public class MainController {
+public class MainController extends Application{
+	
+	public static void main(String [] args) {		
+		launch(args);				
+	}
+
+	@Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("StockApp Plus");
+     
+        try {
+        	
+        	FXMLLoader loader = new FXMLLoader();
+        	loader.setLocation(getClass().getResource("stockSearchScreen.fxml"));
+        	
+        	Parent content = loader.load();
+        	Scene scene = new Scene(content);
+        	
+        	primaryStage.setScene(scene);
+            primaryStage.show();
+        	
+        }
+        catch (Exception e) {
+        	
+        	e.printStackTrace();
+        }       
+
+    }
 
 
 	 @FXML
@@ -116,6 +144,60 @@ public class MainController {
 	 
 	 @FXML
 	 private HBox row13;
+	 
+		@FXML
+	    private TextField comp1;
+
+	    @FXML
+	    private Text region1;
+
+	    @FXML
+	    private Text currency1;
+
+	    @FXML
+	    private Text open1;
+
+	    @FXML
+	    private Text high1;
+
+	    @FXML
+	    private Text low1;
+
+	    @FXML
+	    private Text close1;
+
+	    @FXML
+	    private Text volume1;
+
+	    @FXML
+	    private Text compName1;
+
+	    @FXML
+	    private TextField comp2;
+
+	    @FXML
+	    private Text volume2;
+
+	    @FXML
+	    private Text close2;
+
+	    @FXML
+	    private Text low2;
+
+	    @FXML
+	    private Text high2;
+
+	    @FXML
+	    private Text open2;
+
+	    @FXML
+	    private Text currency2;
+
+	    @FXML
+	    private Text region2;
+
+	    @FXML
+	    private Text compName2;
 	   
 	 // *** End of private variables
 	 
@@ -142,34 +224,36 @@ public class MainController {
 	        }             
 	    }
 	
-	 /* Button not implemented yet
 	 @FXML
-	 void btn(ActionEvent event) {
+		public void buttonCompare(ActionEvent actionEvent) {
 			
-		String stockInput1 = compareField1.getText();
-		String stockInput2 = compareField2.getText();
+			NameSearchDownloader currentStockPlus = new NameSearchDownloader(comp1.getText());
+			StockDownloader currentStock = new StockDownloader(comp1.getText());
+						
+			//Prints everything for company 1
+			compName1.setText(currentStockPlus.getName() + " (" + currentStockPlus.getSymbol() + ")");
+	    	region1.setText(currentStockPlus.getRegion());        	
+	    	currency1.setText(currentStockPlus.getCurrency());        	
+	    	open1.setText(currentStock.getOpen());        	
+	    	high1.setText(currentStock.getHigh());        	
+	    	low1.setText(currentStock.getLow());        	
+	    	close1.setText(currentStock.getClose());        	
+	    	volume1.setText(currentStock.getVolume());
+	    	
+	    	NameSearchDownloader currentStockPlus2 = new NameSearchDownloader(comp2.getText());
+			StockDownloader currentStock2 = new StockDownloader(comp2.getText());
 			
-		// Get downloaded info for stock 1
-			
-		StockDownloader stock1 = new StockDownloader(stockInput1);
-			
-		float openPrice1 = Float.parseFloat(stock1.getOpen());
-		float highPrice1 = Float.parseFloat(stock1.getHigh());
-		float lowPrice1 = Float.parseFloat(stock1.getLow());
-		float closePrice1 = Float.parseFloat(stock1.getClose());
-		float volume1 = Float.parseFloat(stock1.getVolume());
-			
-		// Get downloaded info for stock 2
-			
-		StockDownloader stock2 = new StockDownloader(stockInput2);
-			
-		float openPrice2 = Float.parseFloat(stock2.getOpen());
-		float highPrice2 = Float.parseFloat(stock2.getHigh());
-		float lowPrice2 = Float.parseFloat(stock2.getLow());
-		float closePrice2 = Float.parseFloat(stock2.getClose());
-		float volume2 = Float.parseFloat(stock2.getVolume());
-	}
-    */
+	    	//Prints everything for company 2
+	    	compName2.setText(currentStockPlus2.getName() + " (" + currentStockPlus2.getSymbol() + ")");
+	    	region2.setText(currentStockPlus2.getRegion());        	
+	    	currency2.setText(currentStockPlus2.getCurrency());        	
+	    	open2.setText(currentStock2.getOpen());        	
+	    	high2.setText(currentStock2.getHigh());        	
+	    	low2.setText(currentStock2.getLow());        	
+	    	close2.setText(currentStock2.getClose());        	
+	    	volume2.setText(currentStock2.getVolume());
+	    	
+		}
 	//Calls the search Screen
 	@FXML
 	void searchSymbol(ActionEvent event) {
