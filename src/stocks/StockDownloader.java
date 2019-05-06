@@ -61,10 +61,6 @@ public class StockDownloader {
 			}		
 			String user_date = currentDate;
 			
-			for(int i = 0; i < 7; i++) {
-				System.out.println(dailyDates[i]);
-			}
-			
 			// *** Dates End ***
 
 //			Uncomment below to use a fixed date.				

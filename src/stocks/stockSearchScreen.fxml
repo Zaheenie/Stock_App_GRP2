@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stocks.MainController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stocks.MainController">
   <children>
     <VBox layoutX="0.0" layoutY="0.0" prefHeight="462.0" prefWidth="198.0" style="-fx-background-color: #B0E0E6;">
       <children>
@@ -28,6 +28,7 @@
         </HBox>
         <Button mnemonicParsing="false" onAction="#graphButton" prefHeight="31.0" prefWidth="216.0" text="Graph" />
             <Button mnemonicParsing="false" onAction="#priceHistoryButton" prefHeight="31.0" prefWidth="216.0" text="Price History" />
+            <Button mnemonicParsing="false" onAction="#compareStocksButton" prefHeight="31.0" prefWidth="216.0" text="Compare Stocks" />
       </children>
     </VBox>
       <VBox layoutX="198.0" prefHeight="400.0" prefWidth="405.0">
