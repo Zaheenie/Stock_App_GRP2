@@ -198,7 +198,6 @@ public class MainController extends Application{
 	   
 	 // *** End of private variables
 	 
-	 
 	 @FXML
 	  void compareStocksButton(ActionEvent event) {
 			

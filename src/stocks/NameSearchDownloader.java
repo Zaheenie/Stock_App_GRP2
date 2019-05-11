@@ -35,7 +35,7 @@ public class NameSearchDownloader {
 			JSONArray searchEndpoint = searchOBJ.getJSONArray("bestMatches");
 			JSONObject searchIndex = searchEndpoint.getJSONObject(0);
 			
-			// *** new stuff, storing the values
+			// *** storing the values
 			//
 			this.tickerSymbol = searchIndex.getString("1. symbol");
 			this.name = searchIndex.getString("2. name");
