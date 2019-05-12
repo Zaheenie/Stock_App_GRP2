@@ -46,8 +46,9 @@
                               <Button mnemonicParsing="false" onAction="#showHistory" prefHeight="38.0" prefWidth="60.0" text="Load" />
                            </children>
                         </HBox>
+                        <HBox fx:id="combo" prefHeight="100.0" prefWidth="200.0" />
                         <Label prefHeight="17.0" prefWidth="203.0" />
-                        <ComboBox prefHeight="25.0" prefWidth="195.0" />
+                        <ComboBox fx:id="historySelectionBox" prefHeight="25.0" prefWidth="195.0" />
                      </children>
                   </VBox>
                </children>
