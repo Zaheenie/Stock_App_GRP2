@@ -24,6 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -48,6 +49,15 @@ public class MainController extends Application{
         	Parent content = loader.load();
         	Scene scene = new Scene(content);
         	
+        	 ObservableList<String> options = 
+     			    FXCollections.observableArrayList(
+     			        "Daily",
+     			        "Weekly",
+     			        "Monthly"
+     			    );
+     	    	
+     	    historySelectionBox.setItems(options);
+        	
         	primaryStage.setScene(scene);
             primaryStage.show();        	
         }
@@ -55,6 +65,8 @@ public class MainController extends Application{
         	
         	e.printStackTrace();
         }       
+        
+      
     }
 
 
@@ -195,6 +207,7 @@ public class MainController extends Application{
 
 	 @FXML
 	 private Text compName2;
+	 
 	   
 	 // *** End of private variables
 	 
@@ -205,7 +218,7 @@ public class MainController extends Application{
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStocksScreen.fxml"));
 	        	Parent compareScreen = loader.load();
 	            
-	        	MainController controller = (MainController) loader.getController();	        	        	
+//	        	MainController controller = (MainController) loader.getController();	        	        	
 	        	Scene compareScene = new Scene(compareScreen);	        	
 	        	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
 	        	
@@ -283,25 +296,33 @@ public class MainController extends Application{
         }       
 	}
 	
+	 @FXML
+	 private HBox combo;
+	 
+	
+	 @FXML
+	 private ComboBox<String> historySelectionBox = new ComboBox<>();
+	 
 	//*** Testing calls price history
+	 @FXML
+	 public void initialize() {
+		 historySelectionBox.getItems().removeAll(historySelectionBox.getItems());
+		 historySelectionBox.getItems().addAll("Daily", "Weekly", "Monthly");
+		 historySelectionBox.getSelectionModel().select("Daily");
+	 }
+	 
 	@FXML
 	void priceHistoryButton(ActionEvent event) {
-
+		
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("priceHistoryScreen.fxml"));
-	    	Parent histScreen = loader.load();
-	    	
-	    	MainController controller = (MainController) loader.getController();
-	    	
-	    	Scene histScene = new Scene(histScreen);
-        	
-        	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
-        	
+	    	Parent histScreen = loader.load();    	
+	    	Scene histScene = new Scene(histScreen);        	
+        	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());        	
         	window.setScene(histScene);
         	window.show();
 		}		
-		catch (Exception e) {
-        	
+		catch (Exception e) {        	
         	e.printStackTrace();
         }       
 	}
@@ -320,14 +341,18 @@ public class MainController extends Application{
 		HBox [] evenRows = new HBox[] {
 			row2, row4, row6, row8, row10, row12	
 		};
-				
+		
+		String currentSelection = historySelectionBox.getValue();
+		
 		for (int i = 0; i < 7; i++) {
 		
 			oddRows[i].getChildren().clear();		
 			Label [] rowLabels = new Label[6];
 		
 			for (int j = 0; j < 6; j++) {
-				rowLabels[j] = new Label(currentStock.getDailyHistoryValue(j, i));
+				rowLabels[j] = (currentSelection.equals("Daily")) ? new Label(currentStock.getDailyHistoryValue(j, i)) : 
+							   (currentSelection.equals("Weekly")) ? new Label(currentStock.getWeeklyHistoryValue(j, i)) : 
+								new Label(currentStock.getMonthlyHistoryValue(j, i));
 				rowLabels[j].setPrefSize(77.8, 32);
 				rowLabels[j].setAlignment(Pos.CENTER);
 				rowLabels[j].setFont(new Font("Arial", 12));				
@@ -346,8 +371,15 @@ public class MainController extends Application{
 				if (j == 0)
 					rowLabels[j] = new Label("");
 				else {				
-					double value1 = Double.parseDouble(currentStock.getDailyHistoryValue(j, i));
-					double value2 = Double.parseDouble(currentStock.getDailyHistoryValue(j, i + 1));
+					
+					double value1 = (currentSelection.equals("Daily")) ? Double.parseDouble(currentStock.getDailyHistoryValue(j, i)) : 
+									(currentSelection.equals("Weekly")) ? Double.parseDouble(currentStock.getWeeklyHistoryValue(j, i)) : 
+									Double.parseDouble(currentStock.getMonthlyHistoryValue(j, i));	
+					
+					double value2 = (currentSelection.equals("Daily")) ? Double.parseDouble(currentStock.getDailyHistoryValue(j, i + 1)) : 
+									(currentSelection.equals("Weekly")) ? Double.parseDouble(currentStock.getWeeklyHistoryValue(j, i + 1)) : 
+									Double.parseDouble(currentStock.getMonthlyHistoryValue(j, i + 1));					
+					
 					double differenceValue = value1 - value2;
 									
 					isPostive =  (differenceValue > 0) ? true : false;					
