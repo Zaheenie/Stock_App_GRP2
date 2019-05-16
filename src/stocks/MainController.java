@@ -68,7 +68,6 @@ public class MainController extends Application{
       
     }
 
-
 	 @FXML
 	 private TextField symbolField;
 	 
@@ -302,12 +301,24 @@ public class MainController extends Application{
 	 @FXML
 	 private ComboBox<String> historySelectionBox = new ComboBox<>();
 	 
+	// ComboBox list
+	ObservableList<String> stockInfoList = FXCollections.observableArrayList("Open", "High", "Low", "Close", "All");
+	@FXML
+	private ComboBox<String> stockInfoBox = new ComboBox<>();
+	
 	//*** Testing calls price history
 	 @FXML
 	 public void initialize() {
+				 
 		 historySelectionBox.getItems().removeAll(historySelectionBox.getItems());
 		 historySelectionBox.getItems().addAll("Daily", "Weekly", "Monthly");
 		 historySelectionBox.getSelectionModel().select("Daily");
+		 
+		// Set default value of stock combobox and items
+		stockInfoBox.setValue("All");
+		stockInfoBox.setItems(stockInfoList);
+		 
+
 	 }
 	 
 	@FXML
@@ -435,6 +446,7 @@ public class MainController extends Application{
 	//new
 	
 	
+	
 	@FXML 
 	LineChart<String, Number> lineChart;
 	
@@ -442,21 +454,23 @@ public class MainController extends Application{
 	Label lbl;
 	
 	@FXML
-	private TextField userField1;
+	private static TextField userField1;
 	
 	@FXML
-	private TextField userField2;
+	private static TextField userField2;
 	
 	@FXML
-	ObservableList<String> data = FXCollections.observableArrayList("text1", "text2", "text3");
-	ComboBox<String> stockInfo = new ComboBox<>(data);
+	private TextField graphUserDate;
 
 	
 	@SuppressWarnings("unchecked")
+	
 	public void btn(ActionEvent event) {
 		
 		String stockInput1 = userField1.getText();
 		String stockInput2 = userField2.getText();
+		
+		String stockInfoOption = stockInfoBox.getSelectionModel().getSelectedItem().toString();
 		
 		// Get downloaded info for stock 1
 		StockDownloader stock1 = new StockDownloader(stockInput1);
@@ -473,51 +487,180 @@ public class MainController extends Application{
 		float lowPrice2 = Float.parseFloat(stock2.getLow());
 		float closePrice2 = Float.parseFloat(stock2.getClose());
 		float volume2 = Float.parseFloat(stock2.getVolume());
+		
+		
+		
+		if(stockInfoOption == "Open") {
+			lineChart.getData().clear();
+			
+			XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
+			stock_1.getData().add(new XYChart.Data<String, Number>("Open", openPrice1));
+			
+			XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
+			stock_2.getData().add(new XYChart.Data<String, Number>("Open", openPrice2));
+			
+			lineChart.getData().addAll(stock_1, stock_2);
+			
+			for (final XYChart.Data<String, Number> data:stock_1.getData()) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+					@Override
+					public void handle (MouseEvent event) {
+						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+					}
+				});
+			}
+			
+			for (final XYChart.Data<String, Number> data:stock_2.getData()) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+					@Override
+					public void handle (MouseEvent event) {
+						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+					}
+				});
+			}
+		}
+		
+		if(stockInfoOption == "Close") {
+			lineChart.getData().clear();
+			XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
+			stock_1.getData().add(new XYChart.Data<String, Number>("Close", closePrice1));
+			
+			XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
+			stock_2.getData().add(new XYChart.Data<String, Number>("Close", closePrice2));
+			
+			lineChart.getData().addAll(stock_1, stock_2);
+			
+			// Handler involved in checking for click events in graph
+			for (final XYChart.Data<String, Number> data:stock_1.getData()) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+					@Override
+					public void handle (MouseEvent event) {
+						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+					}
+				});
+			}
+			
+			for (final XYChart.Data<String, Number> data:stock_2.getData()) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+					@Override
+					public void handle (MouseEvent event) {
+						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+					}
+				});
+			}
+		}
+		
+		if(stockInfoOption == "High") {
+			lineChart.getData().clear();
+			XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
+			stock_1.getData().add(new XYChart.Data<String, Number>("High", highPrice1));
+			
+			XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
+			stock_2.getData().add(new XYChart.Data<String, Number>("High", highPrice2));
+			
+			lineChart.getData().addAll(stock_1, stock_2);
+			
+			// Handler involved in checking for click events in graph
+			for (final XYChart.Data<String, Number> data:stock_1.getData()) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+					@Override
+					public void handle (MouseEvent event) {
+						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+					}
+				});
+			}
+			
+			for (final XYChart.Data<String, Number> data:stock_2.getData()) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+					@Override
+					public void handle (MouseEvent event) {
+						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+					}
+				});
+			}
+		}
+		
+		if(stockInfoOption == "Low") {
+			lineChart.getData().clear();
+			XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
+			stock_1.getData().add(new XYChart.Data<String, Number>("Low", lowPrice1));
+			
+			XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
+			stock_2.getData().add(new XYChart.Data<String, Number>("Low", lowPrice2));
+			
+			lineChart.getData().addAll(stock_1, stock_2);
+			
+			// Handler involved in checking for click events in graph
+			for (final XYChart.Data<String, Number> data:stock_1.getData()) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+					@Override
+					public void handle (MouseEvent event) {
+						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+					}
+				});
+			}
+			
+			for (final XYChart.Data<String, Number> data:stock_2.getData()) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+					@Override
+					public void handle (MouseEvent event) {
+						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+					}
+				});
+			}
+		}
 				
-		
-		// Clear the chart legend
-		lineChart.getData().clear();
-		
-		// Information for first compared stock
-		XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
-		stock_1.getData().add(new XYChart.Data<String, Number>("Open", openPrice1));
-		stock_1.getData().add(new XYChart.Data<String, Number>("High", highPrice1));
-		stock_1.getData().add(new XYChart.Data<String, Number>("Low", lowPrice1));
-		stock_1.getData().add(new XYChart.Data<String, Number>("Close", closePrice1));
-		//stock1.getData().add(new XYChart.Data<String, Number>("Friday", volume));
-
-		stock_1.setName(stockInput1);
-		
-		// Information for second compared stock
-		XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
-		stock_2.getData().add(new XYChart.Data<String, Number>("Open", openPrice2));
-		stock_2.getData().add(new XYChart.Data<String, Number>("High", highPrice2));
-		stock_2.getData().add(new XYChart.Data<String, Number>("Low", lowPrice2));
-		stock_2.getData().add(new XYChart.Data<String, Number>("Close", closePrice2));
-		//stock2.getData().add(new XYChart.Data<String, Number>("Friday", 200));
-		stock_2.setName(stockInput2);
-		
-		lineChart.getData().addAll(stock_1, stock_2);
-		
-		// Handler involved in checking for click events in graph
-		for (final XYChart.Data<String, Number> data:stock_1.getData()) {
-			data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-				@Override
-				public void handle (MouseEvent event) {
-					lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-					Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-				}
-			});
-		}
-		
-		for (final XYChart.Data<String, Number> data:stock_2.getData()) {
-			data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-				@Override
-				public void handle (MouseEvent event) {
-					lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-					Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-				}
-			});
-		}
+		if(stockInfoOption == "All") {
+			lineChart.getData().clear();
+					
+			// Information for first compared stock
+			XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
+			stock_1.getData().add(new XYChart.Data<String, Number>("Open", openPrice1));
+			stock_1.getData().add(new XYChart.Data<String, Number>("High", highPrice1));
+			stock_1.getData().add(new XYChart.Data<String, Number>("Low", lowPrice1));
+			stock_1.getData().add(new XYChart.Data<String, Number>("Close", closePrice1));
+			//stock1.getData().add(new XYChart.Data<String, Number>("Friday", volume));
+	
+			stock_1.setName(stockInput1);
+			
+			// Information for second compared stock
+			XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
+			stock_2.getData().add(new XYChart.Data<String, Number>("Open", openPrice2));
+			stock_2.getData().add(new XYChart.Data<String, Number>("High", highPrice2));
+			stock_2.getData().add(new XYChart.Data<String, Number>("Low", lowPrice2));
+			stock_2.getData().add(new XYChart.Data<String, Number>("Close", closePrice2));
+			//stock2.getData().add(new XYChart.Data<String, Number>("Friday", 200));
+			stock_2.setName(stockInput2);
+			
+			lineChart.getData().addAll(stock_1, stock_2);
+				// Handler involved in checking for click events in graph
+			for (final XYChart.Data<String, Number> data:stock_1.getData()) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+					@Override
+					public void handle (MouseEvent event) {
+						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+					}
+				});
+			}
+			
+			for (final XYChart.Data<String, Number> data:stock_2.getData()) {
+				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+					@Override
+					public void handle (MouseEvent event) {
+						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+					}
+				});
+			}
+		}	
 	}
 }

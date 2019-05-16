@@ -32,7 +32,7 @@ public class StockDownloader {
 			
 			// Uncomment the line below in order use the previous day instead of the current day.
 			// Program will not work past 12pm because the API doesn't have the new date yet.
-			// **** dailyCal.add(Calendar.DATE, -1); *****
+			dailyCal.add(Calendar.DATE, -1); 
 			
 			int dayOfWeek = dailyCal.get(Calendar.DAY_OF_WEEK);
 			
