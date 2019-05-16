@@ -1,8 +1,6 @@
 package stocks;
 
 import java.text.DecimalFormat;
-import java.util.List;
-
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,12 +22,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.fxml.FXML;
-
 
 public class MainController extends Application{
 	
@@ -65,200 +60,196 @@ public class MainController extends Application{
         	e.printStackTrace();
         }       
         
-      
     }
+	
+	//Beginning of private variables
+	@FXML
+	private TextField symbolField;
+	
+	@FXML
+	private TextField symbolField2;
 
-	 @FXML
-	 private TextField symbolField;
-	 
-	 @FXML
-	 private TextField symbolField2;
+	@FXML
+	private Label stockOpen;
 
-	 @FXML
-	 private Label stockOpen;
+	@FXML
+	private Label stockLow;
 
-	 @FXML
-	 private Label stockLow;
+	@FXML
+	private Label stockClose;
 
-	 @FXML
-	 private Label stockClose;
+	@FXML
+	private Text companyName;
 
-	 @FXML
-	 private Text companyName;
+	@FXML
+	private Label stockHigh;
 
-	 @FXML
-	 private Label stockHigh;
+	@FXML
+	private Text currency;
 
-	 @FXML
-	 private Label regionLabel;
+	@FXML
+	private Text region;
 
-	 @FXML
-	 private Label currencyLabel;
-
-	 @FXML
-	 private Text currency;
-
-	 @FXML
-	 private Text region;
-
-	 @FXML
-	 private GridPane companyNameLabel;
-
-	 @FXML
-	 private Label stockVolume;
-	 
-	 @FXML
-	 private TextField compareField1;
-		
-	 @FXML
-	 private TextField compareField2;
+	@FXML
+	private Label stockVolume;
 	  
-	 @FXML
-	 private HBox row1;
+	@FXML
+	private HBox row1;
 
-	 @FXML
-	 private HBox row2;
+	@FXML
+	private HBox row2;
 	 
-	 @FXML
-	 private HBox row3;
+	@FXML
+	private HBox row3;
 	
-	 @FXML
-	 private HBox row4;
+	@FXML
+	private HBox row4;
 	 
-	 @FXML
-	 private HBox row5;
+	@FXML
+	private HBox row5;
 
-	 @FXML
-	 private HBox row6;
+	@FXML
+	private HBox row6;
 
-	 @FXML
-	 private HBox row7;
+	@FXML
+	private HBox row7;
 
-	 @FXML
-	 private HBox row8;
-	 
-	 @FXML
-	 private HBox row9;
-
-	 @FXML
-	 private HBox row10;
-
-	 @FXML
-	 private HBox row11;
-
-	 @FXML
-	 private HBox row12;
-	 
-	 @FXML
-	 private HBox row13;
-	 
-	 @FXML
-	 private TextField comp1;
-
-	 @FXML
-	 private Text region1;
-
-	 @FXML
-	 private Text currency1;
-	 
-	 @FXML
-	 private Text open1;
-
-	 @FXML
-	 private Text high1;
-
-	 @FXML
-	 private Text low1;
-
-	 @FXML
-	 private Text close1;
-
-	 @FXML
-	 private Text volume1;
-
-	 @FXML
-	 private Text compName1;
-
-	 @FXML
-	 private TextField comp2;
-
-	 @FXML
-	 private Text volume2;
-
-	 @FXML
-	 private Text close2;
-
-	 @FXML
-	 private Text low2;
-
-	 @FXML
-	 private Text high2;
-
-	 @FXML
-	 private Text open2;
-
-	 @FXML
-	 private Text currency2;
-
-	 @FXML
-	 private Text region2;
-
-	 @FXML
-	 private Text compName2;
-	 
-	   
-	 // *** End of private variables
-	 
-	 @FXML
-	  void compareStocksButton(ActionEvent event) {
-			
-			try {       	
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStocksScreen.fxml"));
-	        	Parent compareScreen = loader.load();
-	            
-//	        	MainController controller = (MainController) loader.getController();	        	        	
-	        	Scene compareScene = new Scene(compareScreen);	        	
-	        	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
-	        	
-	        	window.setScene(compareScene);
-	        	window.show();	      
-	        }		
-			catch (Exception e) {        	
-	        	e.printStackTrace();
-	        }             
-	    }
+	@FXML
+	private HBox row8;
 	
-	 @FXML
-		public void buttonCompare(ActionEvent actionEvent) {
+	@FXML
+	private HBox row9;
+
+	@FXML
+	private HBox row10;
+
+	@FXML
+	private HBox row11;
+
+	@FXML
+	private HBox row12;
+	 
+	@FXML
+	private HBox row13;
+	 
+	@FXML
+	private TextField comp1;
+
+	@FXML
+	private Text region1;
+
+	@FXML
+	private Text currency1;
+	 
+	@FXML
+	private Text open1;
+
+	@FXML
+	private Text high1;
+
+	@FXML
+	private Text low1;
+
+	@FXML
+	private Text close1;
+
+	@FXML
+	private Text volume1;
+
+	@FXML
+	private Text compName1;
+
+	@FXML
+	private TextField comp2;
+
+	@FXML
+	private Text volume2;
+
+	@FXML
+	private Text close2;
+
+	@FXML
+	private Text low2;
+
+	@FXML
+	private Text high2;
+
+	@FXML
+	private Text open2;
+
+	@FXML
+	private Text currency2;
+
+	@FXML
+	private Text region2;
+
+	@FXML
+	private Text compName2; 
+	
+	// *** End of private variables
+	
+	/*
+	 * compareStocksButton displays the compareStocksScreen.fxml
+	 */
+	@FXML
+	 void compareStocksButton(ActionEvent event) {
 			
-			NameSearchDownloader currentStockPlus = new NameSearchDownloader(comp1.getText());
-			StockDownloader currentStock = new StockDownloader(comp1.getText());
-						
-			//Prints everything for company 1
-			compName1.setText(currentStockPlus.getName() + " (" + currentStockPlus.getSymbol() + ")");
-	    	region1.setText(currentStockPlus.getRegion());        	
-	    	currency1.setText(currentStockPlus.getCurrency());        	
-	    	open1.setText(currentStock.getOpen());        	
-	    	high1.setText(currentStock.getHigh());        	
-	    	low1.setText(currentStock.getLow());        	
-	    	close1.setText(currentStock.getClose());        	
-	    	volume1.setText(currentStock.getVolume());
-	    	
-	    	NameSearchDownloader currentStockPlus2 = new NameSearchDownloader(comp2.getText());
-			StockDownloader currentStock2 = new StockDownloader(comp2.getText());
+		try {
 			
-	    	//Prints everything for company 2
-	    	compName2.setText(currentStockPlus2.getName() + " (" + currentStockPlus2.getSymbol() + ")");
-	    	region2.setText(currentStockPlus2.getRegion());        	
-	    	currency2.setText(currentStockPlus2.getCurrency());        	
-	    	open2.setText(currentStock2.getOpen());        	
-	    	high2.setText(currentStock2.getHigh());        	
-	    	low2.setText(currentStock2.getLow());        	
-	    	close2.setText(currentStock2.getClose());        	
-	    	volume2.setText(currentStock2.getVolume());
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStocksScreen.fxml"));
+	        Parent compareScreen = loader.load();
+	           	        	        	
+	        Scene compareScene = new Scene(compareScreen);	        	
+	        Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+	        
+	        window.setScene(compareScene);
+	        window.show();	      
+		}		
+		catch (Exception e) {        	
+	       	e.printStackTrace();
+	    }             
+	}
+	 
+	/*
+	 * buttonCompare takes user input from two search boxes
+	 * and displays each variable from company side by side
+	 * the split pane can be moved left or right to expand
+	 * or minimize
+	 */
+	@FXML
+	public void buttonCompare(ActionEvent actionEvent) {
+					
+		NameSearchDownloader currentStockPlus = new NameSearchDownloader(comp1.getText());
+		StockDownloader currentStock = new StockDownloader(comp1.getText());
+					
+		//Prints everything for company 1
+		compName1.setText(currentStockPlus.getName() + " (" + currentStockPlus.getSymbol() + ")");
+	    region1.setText(currentStockPlus.getRegion());        	
+	    currency1.setText(currentStockPlus.getCurrency());        	
+	    open1.setText(currentStock.getOpen());        	
+	    high1.setText(currentStock.getHigh());        	
+	    low1.setText(currentStock.getLow());        	
+	    close1.setText(currentStock.getClose());        	
+	    volume1.setText(currentStock.getVolume());
 	    	
-		}
-	//Calls the search Screen
+	    NameSearchDownloader currentStockPlus2 = new NameSearchDownloader(comp2.getText());
+		StockDownloader currentStock2 = new StockDownloader(comp2.getText());
+			
+	    //Prints everything for company 2
+	    compName2.setText(currentStockPlus2.getName() + " (" + currentStockPlus2.getSymbol() + ")");
+	    region2.setText(currentStockPlus2.getRegion());        	
+	    currency2.setText(currentStockPlus2.getCurrency());        	
+	    open2.setText(currentStock2.getOpen());        	
+	    high2.setText(currentStock2.getHigh());        	
+	    low2.setText(currentStock2.getLow());        	
+	    close2.setText(currentStock2.getClose());        	
+	    volume2.setText(currentStock2.getVolume());
+	    
+	}
+	 
+	/*
+	 * searchSymbol displays the stockSearchScreen.fxml
+	 */
 	@FXML
 	void searchSymbol(ActionEvent event) {
 		try {
@@ -294,12 +285,11 @@ public class MainController extends Application{
         }       
 	}
 	
-	 @FXML
-	 private HBox combo;
+	@FXML
+	private HBox combo;
 	 
-	
-	 @FXML
-	 private ComboBox<String> historySelectionBox = new ComboBox<>();
+	@FXML
+	private ComboBox<String> historySelectionBox = new ComboBox<>();
 	 
 	// ComboBox list
 	ObservableList<String> stockInfoList = FXCollections.observableArrayList("Open", "High", "Low", "Close", "All");
@@ -307,20 +297,21 @@ public class MainController extends Application{
 	private ComboBox<String> stockInfoBox = new ComboBox<>();
 	
 	//*** Testing calls price history
-	 @FXML
-	 public void initialize() {
-				 
-		 historySelectionBox.getItems().removeAll(historySelectionBox.getItems());
-		 historySelectionBox.getItems().addAll("Daily", "Weekly", "Monthly");
-		 historySelectionBox.getSelectionModel().select("Daily");
+	@FXML
+	public void initialize() {
+			 
+		historySelectionBox.getItems().removeAll(historySelectionBox.getItems());
+		historySelectionBox.getItems().addAll("Daily", "Weekly", "Monthly");
+		historySelectionBox.getSelectionModel().select("Daily");
 		 
 		// Set default value of stock combobox and items
 		stockInfoBox.setValue("All");
 		stockInfoBox.setItems(stockInfoList);
-		 
-
-	 }
-	 
+	}
+	
+	/*
+	 * showHistroy displays the priceHistoryScreen.fxml
+	 */ 
 	@FXML
 	void priceHistoryButton(ActionEvent event) {
 		
@@ -337,6 +328,12 @@ public class MainController extends Application{
         }       
 	}
 	
+	/*
+	 * showHistroy controls the price history screen
+	 * takes in a company symbol from the search box
+	 * and displays it, company history can be seen by
+	 * daily, monthly, or yearly
+	 */
 	@FXML
     void showHistory(ActionEvent event) {
 		
@@ -422,7 +419,9 @@ public class MainController extends Application{
 		
     }
 	
-	//Calls the graphScreen
+	/*
+	 * Calls the graphScreen to display graphScreen.fxml 
+	 */
 	@FXML
     void graphButton(ActionEvent event) {
 		try {
@@ -442,11 +441,6 @@ public class MainController extends Application{
         }       
     }
 
-	
-	//new
-	
-	
-	
 	@FXML 
 	LineChart<String, Number> lineChart;
 	
@@ -462,9 +456,14 @@ public class MainController extends Application{
 	@FXML
 	private TextField graphUserDate;
 
-	
+	/*
+	 * btn method controls the graph in the graphScreen
+	 * allows user to enter two company symbols.
+	 * it also allows user to pick single variables such as the 
+	 * open, high, low, close, or volume to see in the graph
+	 * and it shows the value of each point when clicked
+	 */
 	@SuppressWarnings("unchecked")
-	
 	public void btn(ActionEvent event) {
 		
 		String stockInput1 = userField1.getText();

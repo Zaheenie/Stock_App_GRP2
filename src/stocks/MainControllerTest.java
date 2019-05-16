@@ -71,7 +71,7 @@ public class MainControllerTest {
 	@SuppressWarnings("unused")
 	private static NameSearchDownloader nameConnectionTest;
 	@Test
-	public void testGraphButton() {
+	public void testShowGraph() {
 		nameConnectionTest = new NameSearchDownloader("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=MSN&apikey=I31NR8UIJ14RL4Y7");
 		assertNotNull(nameConnectionTest);
 	}
@@ -82,7 +82,7 @@ public class MainControllerTest {
 	 */
 
 	@Test
-	public void testBtn() {
+	public void testGraphFunction() {
 		nameConnectionTest = new NameSearchDownloader("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=MSN&apikey=I31NR8UIJ14RL4Y7");
 		assertNotNull(nameConnectionTest);
 		

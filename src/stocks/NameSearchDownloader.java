@@ -13,9 +13,7 @@ public class NameSearchDownloader {
 	public NameSearchDownloader(String tick)
 	{		
 		try{
-			final String num = "0:";
-			
-			///Here is Search Endpoint URL
+			//Here is Search Endpoint URL
 			URL searchURL = new URL("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords="+tick+"&apikey=I31NR8UIJ14RL4Y7");
 			
 			URLConnection urlConn = searchURL.openConnection();
@@ -30,7 +28,11 @@ public class NameSearchDownloader {
 				
 			} buff.close();
 			
-			//making an JSON object for search endpoint to parse through the data
+			/*
+			 * Making a JSON object for search_endpoint database to parse through the data
+			 * Company's ticker symbol that is searched is always in position 0 in the JSON file
+			 * therefore getJSONObject() is set to zero instead of a creating an int variable
+			 */
 			JSONObject searchOBJ = new JSONObject(response.toString());
 			JSONArray searchEndpoint = searchOBJ.getJSONArray("bestMatches");
 			JSONObject searchIndex = searchEndpoint.getJSONObject(0);
@@ -49,16 +51,19 @@ public class NameSearchDownloader {
 			e.printStackTrace();
 		}		
 	}
-		// *** Getter methods
-		public String getSymbol() {return this.tickerSymbol;}
-		public String getName() {return this.name;}
-		public String getRegion() {return this.region;}
-		public String getCurrency() {return this.currency;}
-		
-		// *** Instance variables
-		private String tickerSymbol;
-		private String name;
-		private String region;
-		private String currency;
-
+	
+	// *** Instance variables
+	private String tickerSymbol;
+	private String name;
+	private String region;
+	private String currency;
+	
+	/*
+	 * Getter Methods
+	 * Returns a company's Symbol, Name, Region, Currency
+	 */
+	public String getSymbol() {return this.tickerSymbol;}
+	public String getName() {return this.name;}
+	public String getRegion() {return this.region;}
+	public String getCurrency() {return this.currency;}
 }
