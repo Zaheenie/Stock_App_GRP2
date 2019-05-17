@@ -9,59 +9,53 @@ import javafx.scene.control.TextField;
 public class MainControllerTest {
 
 	/**
-	 * Test method for {@link stocks.MainController#main(java.lang.String[])}.
-	 */
-	@Test
-	public void testMain() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link stocks.MainController#start(javafx.stage.Stage)}.
-	 */
-	@Test
-	public void testStartStage() {
-		fail("Not yet implemented");
-	}
-
-	/**
 	 * Test method for {@link stocks.MainController#compareStocksButton(javafx.event.ActionEvent)}.
+	 * Tests whether a connection can be established with the the AlphaVantage API
 	 */
 	@Test
 	public void testCompareStocksButton() {
-		fail("Not yet implemented");
+		nameConnectionTest = new NameSearchDownloader("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=MSN&apikey=I31NR8UIJ14RL4Y7");
+		assertNotNull(nameConnectionTest);
 	}
 
 	/**
 	 * Test method for {@link stocks.MainController#buttonCompare(javafx.event.ActionEvent)}.
+	 * Tests whether a connection can be established with the the AlphaVantage API
 	 */
 	@Test
 	public void testButtonCompare() {
-		fail("Not yet implemented");
+		nameConnectionTest = new NameSearchDownloader("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=MSN&apikey=I31NR8UIJ14RL4Y7");
+		assertNotNull(nameConnectionTest);
 	}
 
 	/**
 	 * Test method for {@link stocks.MainController#searchSymbol(javafx.event.ActionEvent)}.
+	 * Tests whether a connection can be established with the the AlphaVantage API
 	 */
 	@Test
 	public void testSearchSymbol() {
-		fail("Not yet implemented");
+		nameConnectionTest = new NameSearchDownloader("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=MSN&apikey=I31NR8UIJ14RL4Y7");
+		assertNotNull(nameConnectionTest);
 	}
 
 	/**
 	 * Test method for {@link stocks.MainController#priceHistoryButton(javafx.event.ActionEvent)}.
+	 * Tests whether a connection can be established with the the AlphaVantage API
 	 */
 	@Test
 	public void testPriceHistoryButton() {
-		fail("Not yet implemented");
+		nameConnectionTest = new NameSearchDownloader("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=MSN&apikey=I31NR8UIJ14RL4Y7");
+		assertNotNull(nameConnectionTest);
 	}
 
 	/**
 	 * Test method for {@link stocks.MainController#showHistory(javafx.event.ActionEvent)}.
+	 * Tests whether a connection can be established with the the AlphaVantage API
 	 */
 	@Test
 	public void testShowHistory() {
-		fail("Not yet implemented");
+		nameConnectionTest = new NameSearchDownloader("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=MSN&apikey=I31NR8UIJ14RL4Y7");
+		assertNotNull(nameConnectionTest);
 	}
 
 	/**

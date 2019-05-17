@@ -38,7 +38,7 @@ public class MainController extends Application{
 	}
 
 	@Override
-    public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) {
         primaryStage.setTitle("StockApp Plus");
      
         try {       	
@@ -64,149 +64,30 @@ public class MainController extends Application{
         	
         	e.printStackTrace();
         }       
-        
       
     }
 
 	 @FXML
-	 private TextField symbolField;
+	 private TextField symbolField, symbolField2;
 	 
 	 @FXML
-	 private TextField symbolField2;
+	 private Label stockOpen, stockLow, stockClose, stockHigh, stockVolume;
 
 	 @FXML
-	 private Label stockOpen;
-
+	 private Text companyName, region, currency;
+	 	 
 	 @FXML
-	 private Label stockLow;
-
-	 @FXML
-	 private Label stockClose;
-
-	 @FXML
-	 private Text companyName;
-
-	 @FXML
-	 private Label stockHigh;
-
-	 @FXML
-	 private Label regionLabel;
-
-	 @FXML
-	 private Label currencyLabel;
-
-	 @FXML
-	 private Text currency;
-
-	 @FXML
-	 private Text region;
-
-	 @FXML
-	 private GridPane companyNameLabel;
-
-	 @FXML
-	 private Label stockVolume;
+	 private HBox row1, row2, row3, row4, row5, row6, row7, row8, row9, row10, row11, row12, row13;
 	 
 	 @FXML
-	 private TextField compareField1;
-		
-	 @FXML
-	 private TextField compareField2;
-	  
-	 @FXML
-	 private HBox row1;
-
-	 @FXML
-	 private HBox row2;
+	 private TextField comp1, comp2;
 	 
 	 @FXML
-	 private HBox row3;
+	 private Text region1, currency1, open1, high1, low1, close1, volume1, compName1;
+	 
+	 @FXML
+	 private Text region2, currency2, open2, high2, low2, close2, volume2, compName2;
 	
-	 @FXML
-	 private HBox row4;
-	 
-	 @FXML
-	 private HBox row5;
-
-	 @FXML
-	 private HBox row6;
-
-	 @FXML
-	 private HBox row7;
-
-	 @FXML
-	 private HBox row8;
-	 
-	 @FXML
-	 private HBox row9;
-
-	 @FXML
-	 private HBox row10;
-
-	 @FXML
-	 private HBox row11;
-
-	 @FXML
-	 private HBox row12;
-	 
-	 @FXML
-	 private HBox row13;
-	 
-	 @FXML
-	 private TextField comp1;
-
-	 @FXML
-	 private Text region1;
-
-	 @FXML
-	 private Text currency1;
-	 
-	 @FXML
-	 private Text open1;
-
-	 @FXML
-	 private Text high1;
-
-	 @FXML
-	 private Text low1;
-
-	 @FXML
-	 private Text close1;
-
-	 @FXML
-	 private Text volume1;
-
-	 @FXML
-	 private Text compName1;
-
-	 @FXML
-	 private TextField comp2;
-
-	 @FXML
-	 private Text volume2;
-
-	 @FXML
-	 private Text close2;
-
-	 @FXML
-	 private Text low2;
-
-	 @FXML
-	 private Text high2;
-
-	 @FXML
-	 private Text open2;
-
-	 @FXML
-	 private Text currency2;
-
-	 @FXML
-	 private Text region2;
-
-	 @FXML
-	 private Text compName2;
-	 
-	   
 	 // *** End of private variables
 	 
 	 @FXML
@@ -214,9 +95,7 @@ public class MainController extends Application{
 			
 			try {       	
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStocksScreen.fxml"));
-	        	Parent compareScreen = loader.load();
-	            
-//	        	MainController controller = (MainController) loader.getController();	        	        	
+	        	Parent compareScreen = loader.load();      	        	
 	        	Scene compareScene = new Scene(compareScreen);	        	
 	        	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
 	        	
@@ -257,7 +136,7 @@ public class MainController extends Application{
 	    	close2.setText(currentStock2.getClose());        	
 	    	volume2.setText(currentStock2.getVolume());
 	    	
-		}
+	}
 	//Calls the search Screen
 	@FXML
 	void searchSymbol(ActionEvent event) {
@@ -291,13 +170,12 @@ public class MainController extends Application{
         }
         catch (Exception e) {        	
         	e.printStackTrace();
-        }       
+        }        
 	}
 	
 	 @FXML
 	 private HBox combo;
 	 
-	
 	 @FXML
 	 private ComboBox<String> historySelectionBox = new ComboBox<>();
 	 
@@ -314,11 +192,6 @@ public class MainController extends Application{
 		 historySelectionBox.getItems().addAll("Daily", "Weekly", "Monthly");
 		 historySelectionBox.getSelectionModel().select("Daily");
 		 
-		// Set default value of stock combobox and items
-		stockInfoBox.setValue("All");
-		stockInfoBox.setItems(stockInfoList);
-		 
-
 	 }
 	 
 	@FXML
@@ -334,92 +207,104 @@ public class MainController extends Application{
 		}		
 		catch (Exception e) {        	
         	e.printStackTrace();
-        }       
+		}       
 	}
 	
 	@FXML
     void showHistory(ActionEvent event) {
-		
-		StockDownloader currentStock = new StockDownloader(symbolField2.getText());
-		DecimalFormat fourDigitPrecision = new DecimalFormat("#0.0000");
-		DecimalFormat volumePrecision = new DecimalFormat("#0");
-		
-		HBox [] oddRows = new HBox[] {
-			row1, row3, row5, row7, row9, row11, row13
-		}; 
-		
-		HBox [] evenRows = new HBox[] {
-			row2, row4, row6, row8, row10, row12	
-		};
-		
-		String currentSelection = historySelectionBox.getValue();
-		
-		for (int i = 0; i < 7; i++) {
-		
-			oddRows[i].getChildren().clear();		
-			Label [] rowLabels = new Label[6];
-		
-			for (int j = 0; j < 6; j++) {
-				rowLabels[j] = (currentSelection.equals("Daily")) ? new Label(currentStock.getDailyHistoryValue(j, i)) : 
-							   (currentSelection.equals("Weekly")) ? new Label(currentStock.getWeeklyHistoryValue(j, i)) : 
-								new Label(currentStock.getMonthlyHistoryValue(j, i));
-				rowLabels[j].setPrefSize(77.8, 32);
-				rowLabels[j].setAlignment(Pos.CENTER);
-				rowLabels[j].setFont(new Font("Arial", 12));				
-				oddRows[i].getChildren().add(rowLabels[j]);
-			}			
-		}	
-		
-		for (int i = 0; i < 6; i++) {
-			
-			evenRows[i].getChildren().clear();
-			Label [] rowLabels = new Label[6];
-		
-			for (int j = 0; j < 6; j++) {
+		//Used to obtain the stock ticker 
+				StockDownloader currentStock = new StockDownloader(symbolField2.getText());
 				
-				boolean isPostive = false;				
-				if (j == 0)
-					rowLabels[j] = new Label("");
-				else {				
+				//The decimalformat objects are used to format the values which can have a large number of decimals
+				DecimalFormat fourDigitPrecision = new DecimalFormat("#0.0000");
+				DecimalFormat volumePrecision = new DecimalFormat("#0");
+				
+				//The odd rows display the stock values. Putting them into an array makes it easier to manipulate
+				HBox [] oddRows = new HBox[] {
+					row1, row3, row5, row7, row9, row11, row13
+				}; 
+				
+				//The even rows display the changes. Putting them into an array makes it easier to manipulate
+				HBox [] evenRows = new HBox[] {
+					row2, row4, row6, row8, row10, row12	
+				};
+				
+				//This obtains the choice from the drop down menu. The choices being daily, weekly, monthly
+				String currentSelection = historySelectionBox.getValue();
+				
+				//This for loop obtains the values from the data members of the current stock and displays them onto the oddrows
+				for (int i = 0; i < 7; i++) {
+				
+					oddRows[i].getChildren().clear();		
+					Label [] rowLabels = new Label[6];
+				
+					for (int j = 0; j < 6; j++) {
+						rowLabels[j] = (currentSelection.equals("Daily")) ? new Label(currentStock.getDailyHistoryValue(j, i)) : 
+									   (currentSelection.equals("Weekly")) ? new Label(currentStock.getWeeklyHistoryValue(j, i)) : 
+										new Label(currentStock.getMonthlyHistoryValue(j, i));
+						rowLabels[j].setPrefSize(77.8, 32);
+						rowLabels[j].setAlignment(Pos.CENTER);
+						rowLabels[j].setFont(new Font("Arial", 12));				
+						oddRows[i].getChildren().add(rowLabels[j]);
+					}			
+				}	
+				
+				//This for loop obtains the differences from the values in their corresponding values in the odd rows and displays
+				//them in the even rows
+				for (int i = 0; i < 6; i++) {
 					
-					double value1 = (currentSelection.equals("Daily")) ? Double.parseDouble(currentStock.getDailyHistoryValue(j, i)) : 
-									(currentSelection.equals("Weekly")) ? Double.parseDouble(currentStock.getWeeklyHistoryValue(j, i)) : 
-									Double.parseDouble(currentStock.getMonthlyHistoryValue(j, i));	
-					
-					double value2 = (currentSelection.equals("Daily")) ? Double.parseDouble(currentStock.getDailyHistoryValue(j, i + 1)) : 
-									(currentSelection.equals("Weekly")) ? Double.parseDouble(currentStock.getWeeklyHistoryValue(j, i + 1)) : 
-									Double.parseDouble(currentStock.getMonthlyHistoryValue(j, i + 1));					
-					
-					double differenceValue = value1 - value2;
-									
-					isPostive =  (differenceValue > 0) ? true : false;					
-					String difference;
-					
-					if (j != 5) {					
-						difference = (isPostive) ?  "+" + fourDigitPrecision.format(value1 - value2) : 
-													"" + fourDigitPrecision.format(value1 - value2);
+					evenRows[i].getChildren().clear();
+					Label [] rowLabels = new Label[6];
+				
+					for (int j = 0; j < 6; j++) {
+						
+						boolean isPostive = false;	
+						//The line below is used to ignore the first label of the even row, which is just an empty label used to line up the rest of the labels
+						if (j == 0)
+							rowLabels[j] = new Label("");
+						else {				
+							//Logic to obtain the changes between the dates
+							
+							double value1 = (currentSelection.equals("Daily")) ? Double.parseDouble(currentStock.getDailyHistoryValue(j, i)) : 
+											(currentSelection.equals("Weekly")) ? Double.parseDouble(currentStock.getWeeklyHistoryValue(j, i)) : 
+											Double.parseDouble(currentStock.getMonthlyHistoryValue(j, i));	
+							
+							double value2 = (currentSelection.equals("Daily")) ? Double.parseDouble(currentStock.getDailyHistoryValue(j, i + 1)) : 
+											(currentSelection.equals("Weekly")) ? Double.parseDouble(currentStock.getWeeklyHistoryValue(j, i + 1)) : 
+											Double.parseDouble(currentStock.getMonthlyHistoryValue(j, i + 1));					
+							
+							double differenceValue = value1 - value2;
+											
+							isPostive =  (differenceValue > 0) ? true : false;					
+							String difference;
+							
+							//Special logic used to format the volume value which is much longer than the other values
+							if (j != 5) {					
+								difference = (isPostive) ?  "+" + fourDigitPrecision.format(value1 - value2) : 
+															"" + fourDigitPrecision.format(value1 - value2);
+							}
+							else {					
+								difference = (isPostive) ?  "+" + volumePrecision.format(value1 - value2) : 
+															"" + volumePrecision.format(value1 - value2);
+							}															
+							rowLabels[j] = new Label(difference);
+						}
+						
+						//Setting the obtained values into the even rows
+						rowLabels[j].setPrefSize(77.8, 32);
+						rowLabels[j].setAlignment(Pos.CENTER);
+						rowLabels[j].setFont(new Font("Arial", 12));
+						
+						//Logic to displayed the changes in different colors depending on if it's positive or not
+						if (isPostive)
+							rowLabels[j].setTextFill(Color.web("#00FF7F")); //green
+						else 
+							rowLabels[j].setTextFill(Color.web("#ff76a3")); //red
+						
+						evenRows[i].getChildren().add(rowLabels[j]);
 					}
-					else {					
-						difference = (isPostive) ?  "+" + volumePrecision.format(value1 - value2) : 
-													"" + volumePrecision.format(value1 - value2);
-					}															
-					rowLabels[j] = new Label(difference);
-				}
-				
-				rowLabels[j].setPrefSize(77.8, 32);
-				rowLabels[j].setAlignment(Pos.CENTER);
-				rowLabels[j].setFont(new Font("Arial", 12));
-				
-				if (isPostive)
-					rowLabels[j].setTextFill(Color.web("#00FF7F")); //green
-				else 
-					rowLabels[j].setTextFill(Color.web("#ff76a3")); //red
-				
-				evenRows[i].getChildren().add(rowLabels[j]);
-			}
-			
-		}	
-		
+					
+		} 		
     }
 	
 	//Calls the graphScreen
@@ -442,11 +327,6 @@ public class MainController extends Application{
         }       
     }
 
-	
-	//new
-	
-	
-	
 	@FXML 
 	LineChart<String, Number> lineChart;
 	
@@ -454,17 +334,13 @@ public class MainController extends Application{
 	Label lbl;
 	
 	@FXML
-	private static TextField userField1;
-	
-	@FXML
-	private static TextField userField2;
+	private static TextField userField1, userField2;	
 	
 	@FXML
 	private TextField graphUserDate;
 
 	
-	@SuppressWarnings("unchecked")
-	
+	@SuppressWarnings("unchecked")	
 	public void btn(ActionEvent event) {
 		
 		String stockInput1 = userField1.getText();
