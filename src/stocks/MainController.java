@@ -1,6 +1,8 @@
 package stocks;
 
 import java.text.DecimalFormat;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,9 +24,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+
 
 public class MainController extends Application{
 	
@@ -43,213 +49,97 @@ public class MainController extends Application{
         	Parent content = loader.load();
         	Scene scene = new Scene(content);
         	
-        	 ObservableList<String> options = 
-     			    FXCollections.observableArrayList(
-     			        "Daily",
-     			        "Weekly",
-     			        "Monthly"
-     			    );
-     	    	
-     	    historySelectionBox.setItems(options);
-        	
         	primaryStage.setScene(scene);
             primaryStage.show();        	
         }
-        catch (Exception e) {
-        	
+        catch (Exception e) {    	
         	e.printStackTrace();
-        }       
-        
+        }            
     }
-	
-	//Beginning of private variables
-	@FXML
-	private TextField symbolField;
-	
-	@FXML
-	private TextField symbolField2;
 
-	@FXML
-	private Label stockOpen;
 
-	@FXML
-	private Label stockLow;
+	 @FXML
+	 private TextField symbolField, symbolField2;
 
-	@FXML
-	private Label stockClose;
+	 @FXML
+	 private Label stockOpen, stockLow, stockClose, stockHigh, stockVolume;
 
-	@FXML
-	private Text companyName;
+	 @FXML
+	 private Text companyName, currency, region;
 
-	@FXML
-	private Label stockHigh;
+	 @FXML
+	 private Label regionLabel, currencyLabel;
 
-	@FXML
-	private Text currency;
+	 @FXML
+	 private GridPane companyNameLabel;
 
-	@FXML
-	private Text region;
-
-	@FXML
-	private Label stockVolume;
-	  
-	@FXML
-	private HBox row1;
-
-	@FXML
-	private HBox row2;
+	 @FXML
+	 private TextField compareField1, compareField2;
+  
+	 @FXML
+	 private HBox row1, row2, row3, row4, row5, row6, row7, row8, row9, row10, row11, row12, row13;
 	 
-	@FXML
-	private HBox row3;
-	
-	@FXML
-	private HBox row4;
+	 @FXML
+	 private TextField comp1, comp2;
+
+	 @FXML
+	 private Text region1, currency1, open1, high1, low1, close1, volume1, compName1;
 	 
-	@FXML
-	private HBox row5;
-
-	@FXML
-	private HBox row6;
-
-	@FXML
-	private HBox row7;
-
-	@FXML
-	private HBox row8;
-	
-	@FXML
-	private HBox row9;
-
-	@FXML
-	private HBox row10;
-
-	@FXML
-	private HBox row11;
-
-	@FXML
-	private HBox row12;
+	 @FXML
+	 private Text region2, currency2, open2, high2, low2, close2, volume2, compName2;
 	 
-	@FXML
-	private HBox row13;
+	   
+	 // *** End of private variables
 	 
-	@FXML
-	private TextField comp1;
-
-	@FXML
-	private Text region1;
-
-	@FXML
-	private Text currency1;
-	 
-	@FXML
-	private Text open1;
-
-	@FXML
-	private Text high1;
-
-	@FXML
-	private Text low1;
-
-	@FXML
-	private Text close1;
-
-	@FXML
-	private Text volume1;
-
-	@FXML
-	private Text compName1;
-
-	@FXML
-	private TextField comp2;
-
-	@FXML
-	private Text volume2;
-
-	@FXML
-	private Text close2;
-
-	@FXML
-	private Text low2;
-
-	@FXML
-	private Text high2;
-
-	@FXML
-	private Text open2;
-
-	@FXML
-	private Text currency2;
-
-	@FXML
-	private Text region2;
-
-	@FXML
-	private Text compName2; 
-	
-	// *** End of private variables
-	
-	/*
-	 * compareStocksButton displays the compareStocksScreen.fxml
-	 */
-	@FXML
-	 void compareStocksButton(ActionEvent event) {
+	 @FXML
+	  void compareStocksButton(ActionEvent event) {
 			
-		try {
+			try {       	
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStocksScreen.fxml"));
+	        	Parent compareScreen = loader.load();
+	                    	        	
+	        	Scene compareScene = new Scene(compareScreen);	        	
+	        	Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+	        	
+	        	window.setScene(compareScene);
+	        	window.show();	      
+	        }		
+			catch (Exception e) {        	
+	        	e.printStackTrace();
+	        }             
+	    }
+	
+	 @FXML
+		public void buttonCompare(ActionEvent actionEvent) {
 			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("compareStocksScreen.fxml"));
-	        Parent compareScreen = loader.load();
-	           	        	        	
-	        Scene compareScene = new Scene(compareScreen);	        	
-	        Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
-	        
-	        window.setScene(compareScene);
-	        window.show();	      
-		}		
-		catch (Exception e) {        	
-	       	e.printStackTrace();
-	    }             
-	}
-	 
-	/*
-	 * buttonCompare takes user input from two search boxes
-	 * and displays each variable from company side by side
-	 * the split pane can be moved left or right to expand
-	 * or minimize
-	 */
-	@FXML
-	public void buttonCompare(ActionEvent actionEvent) {
-					
-		NameSearchDownloader currentStockPlus = new NameSearchDownloader(comp1.getText());
-		StockDownloader currentStock = new StockDownloader(comp1.getText());
-					
-		//Prints everything for company 1
-		compName1.setText(currentStockPlus.getName() + " (" + currentStockPlus.getSymbol() + ")");
-	    region1.setText(currentStockPlus.getRegion());        	
-	    currency1.setText(currentStockPlus.getCurrency());        	
-	    open1.setText(currentStock.getOpen());        	
-	    high1.setText(currentStock.getHigh());        	
-	    low1.setText(currentStock.getLow());        	
-	    close1.setText(currentStock.getClose());        	
-	    volume1.setText(currentStock.getVolume());
+			NameSearchDownloader currentStockPlus = new NameSearchDownloader(comp1.getText());
+			StockDownloader currentStock = new StockDownloader(comp1.getText());
+						
+			//Prints everything for company 1
+			compName1.setText(currentStockPlus.getName() + " (" + currentStockPlus.getSymbol() + ")");
+	    	region1.setText(currentStockPlus.getRegion());        	
+	    	currency1.setText(currentStockPlus.getCurrency());        	
+	    	open1.setText(currentStock.getOpen());        	
+	    	high1.setText(currentStock.getHigh());        	
+	    	low1.setText(currentStock.getLow());        	
+	    	close1.setText(currentStock.getClose());        	
+	    	volume1.setText(currentStock.getVolume());
 	    	
-	    NameSearchDownloader currentStockPlus2 = new NameSearchDownloader(comp2.getText());
-		StockDownloader currentStock2 = new StockDownloader(comp2.getText());
+	    	NameSearchDownloader currentStockPlus2 = new NameSearchDownloader(comp2.getText());
+			StockDownloader currentStock2 = new StockDownloader(comp2.getText());
 			
-	    //Prints everything for company 2
-	    compName2.setText(currentStockPlus2.getName() + " (" + currentStockPlus2.getSymbol() + ")");
-	    region2.setText(currentStockPlus2.getRegion());        	
-	    currency2.setText(currentStockPlus2.getCurrency());        	
-	    open2.setText(currentStock2.getOpen());        	
-	    high2.setText(currentStock2.getHigh());        	
-	    low2.setText(currentStock2.getLow());        	
-	    close2.setText(currentStock2.getClose());        	
-	    volume2.setText(currentStock2.getVolume());
-	    
-	}
-	 
-	/*
-	 * searchSymbol displays the stockSearchScreen.fxml
-	 */
+	    	//Prints everything for company 2
+	    	compName2.setText(currentStockPlus2.getName() + " (" + currentStockPlus2.getSymbol() + ")");
+	    	region2.setText(currentStockPlus2.getRegion());        	
+	    	currency2.setText(currentStockPlus2.getCurrency());        	
+	    	open2.setText(currentStock2.getOpen());        	
+	    	high2.setText(currentStock2.getHigh());        	
+	    	low2.setText(currentStock2.getLow());        	
+	    	close2.setText(currentStock2.getClose());        	
+	    	volume2.setText(currentStock2.getVolume());
+	    	
+		}
+	//Calls the search Screen
 	@FXML
 	void searchSymbol(ActionEvent event) {
 		try {
@@ -285,33 +175,21 @@ public class MainController extends Application{
         }       
 	}
 	
-	@FXML
-	private HBox combo;
+	 @FXML
+	 private HBox combo;
 	 
-	@FXML
-	private ComboBox<String> historySelectionBox = new ComboBox<>();
-	 
-	// ComboBox list
-	ObservableList<String> stockInfoList = FXCollections.observableArrayList("Open", "High", "Low", "Close", "All");
-	@FXML
-	private ComboBox<String> stockInfoBox = new ComboBox<>();
 	
+	 @FXML
+	 private ComboBox<String> historySelectionBox = new ComboBox<>();
+	 
 	//*** Testing calls price history
-	@FXML
-	public void initialize() {
-			 
-		historySelectionBox.getItems().removeAll(historySelectionBox.getItems());
-		historySelectionBox.getItems().addAll("Daily", "Weekly", "Monthly");
-		historySelectionBox.getSelectionModel().select("Daily");
-		 
-		// Set default value of stock combobox and items
-		stockInfoBox.setValue("All");
-		stockInfoBox.setItems(stockInfoList);
-	}
-	
-	/*
-	 * showHistroy displays the priceHistoryScreen.fxml
-	 */ 
+	 @FXML
+	 public void initialize() {
+		 historySelectionBox.getItems().removeAll(historySelectionBox.getItems());
+		 historySelectionBox.getItems().addAll("Daily", "Weekly", "Monthly");
+		 historySelectionBox.getSelectionModel().select("Daily");
+	 }
+	 
 	@FXML
 	void priceHistoryButton(ActionEvent event) {
 		
@@ -328,29 +206,30 @@ public class MainController extends Application{
         }       
 	}
 	
-	/*
-	 * showHistroy controls the price history screen
-	 * takes in a company symbol from the search box
-	 * and displays it, company history can be seen by
-	 * daily, monthly, or yearly
-	 */
 	@FXML
     void showHistory(ActionEvent event) {
 		
+		//Used to obtain the stock ticker 
 		StockDownloader currentStock = new StockDownloader(symbolField2.getText());
+		
+		//The decimalformat objects are used to format the values which can have a large number of decimals
 		DecimalFormat fourDigitPrecision = new DecimalFormat("#0.0000");
 		DecimalFormat volumePrecision = new DecimalFormat("#0");
 		
+		//The odd rows display the stock values. Putting them into an array makes it easier to manipulate
 		HBox [] oddRows = new HBox[] {
 			row1, row3, row5, row7, row9, row11, row13
 		}; 
 		
+		//The even rows display the changes. Putting them into an array makes it easier to manipulate
 		HBox [] evenRows = new HBox[] {
 			row2, row4, row6, row8, row10, row12	
 		};
 		
+		//This obtains the choice from the drop down menu. The choices being daily, weekly, monthly
 		String currentSelection = historySelectionBox.getValue();
 		
+		//This for loop obtains the values from the data members of the current stock and displays them onto the oddrows
 		for (int i = 0; i < 7; i++) {
 		
 			oddRows[i].getChildren().clear();		
@@ -367,6 +246,8 @@ public class MainController extends Application{
 			}			
 		}	
 		
+		//This for loop obtains the differences from the values in their corresponding values in the odd rows and displays
+		//them in the even rows
 		for (int i = 0; i < 6; i++) {
 			
 			evenRows[i].getChildren().clear();
@@ -374,10 +255,12 @@ public class MainController extends Application{
 		
 			for (int j = 0; j < 6; j++) {
 				
-				boolean isPostive = false;				
+				boolean isPostive = false;	
+				//The line below is used to ignore the first label of the even row, which is just an empty label used to line up the rest of the labels
 				if (j == 0)
 					rowLabels[j] = new Label("");
 				else {				
+					//Logic to obtain the changes between the dates
 					
 					double value1 = (currentSelection.equals("Daily")) ? Double.parseDouble(currentStock.getDailyHistoryValue(j, i)) : 
 									(currentSelection.equals("Weekly")) ? Double.parseDouble(currentStock.getWeeklyHistoryValue(j, i)) : 
@@ -392,6 +275,7 @@ public class MainController extends Application{
 					isPostive =  (differenceValue > 0) ? true : false;					
 					String difference;
 					
+					//Special logic used to format the volume value which is much longer than the other values
 					if (j != 5) {					
 						difference = (isPostive) ?  "+" + fourDigitPrecision.format(value1 - value2) : 
 													"" + fourDigitPrecision.format(value1 - value2);
@@ -403,10 +287,12 @@ public class MainController extends Application{
 					rowLabels[j] = new Label(difference);
 				}
 				
+				//Setting the obtained values into the even rows
 				rowLabels[j].setPrefSize(77.8, 32);
 				rowLabels[j].setAlignment(Pos.CENTER);
 				rowLabels[j].setFont(new Font("Arial", 12));
 				
+				//Logic to displayed the changes in different colors depending on if it's positive or not
 				if (isPostive)
 					rowLabels[j].setTextFill(Color.web("#00FF7F")); //green
 				else 
@@ -419,9 +305,7 @@ public class MainController extends Application{
 		
     }
 	
-	/*
-	 * Calls the graphScreen to display graphScreen.fxml 
-	 */
+	//Calls the graphScreen
 	@FXML
     void graphButton(ActionEvent event) {
 		try {
@@ -441,6 +325,10 @@ public class MainController extends Application{
         }       
     }
 
+	
+	//new
+	
+	
 	@FXML 
 	LineChart<String, Number> lineChart;
 	
@@ -448,28 +336,21 @@ public class MainController extends Application{
 	Label lbl;
 	
 	@FXML
-	private static TextField userField1;
+	private TextField userField1;
 	
 	@FXML
-	private static TextField userField2;
+	private TextField userField2;
 	
 	@FXML
-	private TextField graphUserDate;
+	ObservableList<String> data = FXCollections.observableArrayList("text1", "text2", "text3");
+	ComboBox<String> stockInfo = new ComboBox<>(data);
 
-	/*
-	 * btn method controls the graph in the graphScreen
-	 * allows user to enter two company symbols.
-	 * it also allows user to pick single variables such as the 
-	 * open, high, low, close, or volume to see in the graph
-	 * and it shows the value of each point when clicked
-	 */
+	
 	@SuppressWarnings("unchecked")
 	public void btn(ActionEvent event) {
 		
 		String stockInput1 = userField1.getText();
 		String stockInput2 = userField2.getText();
-		
-		String stockInfoOption = stockInfoBox.getSelectionModel().getSelectedItem().toString();
 		
 		// Get downloaded info for stock 1
 		StockDownloader stock1 = new StockDownloader(stockInput1);
@@ -486,180 +367,51 @@ public class MainController extends Application{
 		float lowPrice2 = Float.parseFloat(stock2.getLow());
 		float closePrice2 = Float.parseFloat(stock2.getClose());
 		float volume2 = Float.parseFloat(stock2.getVolume());
-		
-		
-		
-		if(stockInfoOption == "Open") {
-			lineChart.getData().clear();
-			
-			XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
-			stock_1.getData().add(new XYChart.Data<String, Number>("Open", openPrice1));
-			
-			XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
-			stock_2.getData().add(new XYChart.Data<String, Number>("Open", openPrice2));
-			
-			lineChart.getData().addAll(stock_1, stock_2);
-			
-			for (final XYChart.Data<String, Number> data:stock_1.getData()) {
-				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-					@Override
-					public void handle (MouseEvent event) {
-						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-					}
-				});
-			}
-			
-			for (final XYChart.Data<String, Number> data:stock_2.getData()) {
-				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-					@Override
-					public void handle (MouseEvent event) {
-						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-					}
-				});
-			}
-		}
-		
-		if(stockInfoOption == "Close") {
-			lineChart.getData().clear();
-			XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
-			stock_1.getData().add(new XYChart.Data<String, Number>("Close", closePrice1));
-			
-			XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
-			stock_2.getData().add(new XYChart.Data<String, Number>("Close", closePrice2));
-			
-			lineChart.getData().addAll(stock_1, stock_2);
-			
-			// Handler involved in checking for click events in graph
-			for (final XYChart.Data<String, Number> data:stock_1.getData()) {
-				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-					@Override
-					public void handle (MouseEvent event) {
-						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-					}
-				});
-			}
-			
-			for (final XYChart.Data<String, Number> data:stock_2.getData()) {
-				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-					@Override
-					public void handle (MouseEvent event) {
-						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-					}
-				});
-			}
-		}
-		
-		if(stockInfoOption == "High") {
-			lineChart.getData().clear();
-			XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
-			stock_1.getData().add(new XYChart.Data<String, Number>("High", highPrice1));
-			
-			XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
-			stock_2.getData().add(new XYChart.Data<String, Number>("High", highPrice2));
-			
-			lineChart.getData().addAll(stock_1, stock_2);
-			
-			// Handler involved in checking for click events in graph
-			for (final XYChart.Data<String, Number> data:stock_1.getData()) {
-				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-					@Override
-					public void handle (MouseEvent event) {
-						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-					}
-				});
-			}
-			
-			for (final XYChart.Data<String, Number> data:stock_2.getData()) {
-				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-					@Override
-					public void handle (MouseEvent event) {
-						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-					}
-				});
-			}
-		}
-		
-		if(stockInfoOption == "Low") {
-			lineChart.getData().clear();
-			XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
-			stock_1.getData().add(new XYChart.Data<String, Number>("Low", lowPrice1));
-			
-			XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
-			stock_2.getData().add(new XYChart.Data<String, Number>("Low", lowPrice2));
-			
-			lineChart.getData().addAll(stock_1, stock_2);
-			
-			// Handler involved in checking for click events in graph
-			for (final XYChart.Data<String, Number> data:stock_1.getData()) {
-				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-					@Override
-					public void handle (MouseEvent event) {
-						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-					}
-				});
-			}
-			
-			for (final XYChart.Data<String, Number> data:stock_2.getData()) {
-				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-					@Override
-					public void handle (MouseEvent event) {
-						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-					}
-				});
-			}
-		}
 				
-		if(stockInfoOption == "All") {
-			lineChart.getData().clear();
-					
-			// Information for first compared stock
-			XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
-			stock_1.getData().add(new XYChart.Data<String, Number>("Open", openPrice1));
-			stock_1.getData().add(new XYChart.Data<String, Number>("High", highPrice1));
-			stock_1.getData().add(new XYChart.Data<String, Number>("Low", lowPrice1));
-			stock_1.getData().add(new XYChart.Data<String, Number>("Close", closePrice1));
-			//stock1.getData().add(new XYChart.Data<String, Number>("Friday", volume));
-	
-			stock_1.setName(stockInput1);
-			
-			// Information for second compared stock
-			XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
-			stock_2.getData().add(new XYChart.Data<String, Number>("Open", openPrice2));
-			stock_2.getData().add(new XYChart.Data<String, Number>("High", highPrice2));
-			stock_2.getData().add(new XYChart.Data<String, Number>("Low", lowPrice2));
-			stock_2.getData().add(new XYChart.Data<String, Number>("Close", closePrice2));
-			//stock2.getData().add(new XYChart.Data<String, Number>("Friday", 200));
-			stock_2.setName(stockInput2);
-			
-			lineChart.getData().addAll(stock_1, stock_2);
-				// Handler involved in checking for click events in graph
-			for (final XYChart.Data<String, Number> data:stock_1.getData()) {
-				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-					@Override
-					public void handle (MouseEvent event) {
-						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-					}
-				});
-			}
-			
-			for (final XYChart.Data<String, Number> data:stock_2.getData()) {
-				data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-					@Override
-					public void handle (MouseEvent event) {
-						lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
-						Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
-					}
-				});
-			}
-		}	
+		
+		// Clear the chart legend
+		lineChart.getData().clear();
+		
+		// Information for first compared stock
+		XYChart.Series<String, Number> stock_1 = new XYChart.Series<String, Number>();
+		stock_1.getData().add(new XYChart.Data<String, Number>("Open", openPrice1));
+		stock_1.getData().add(new XYChart.Data<String, Number>("High", highPrice1));
+		stock_1.getData().add(new XYChart.Data<String, Number>("Low", lowPrice1));
+		stock_1.getData().add(new XYChart.Data<String, Number>("Close", closePrice1));
+		//stock1.getData().add(new XYChart.Data<String, Number>("Friday", volume));
+
+		stock_1.setName(stockInput1);
+		
+		// Information for second compared stock
+		XYChart.Series<String, Number> stock_2 = new XYChart.Series<String, Number>();
+		stock_2.getData().add(new XYChart.Data<String, Number>("Open", openPrice2));
+		stock_2.getData().add(new XYChart.Data<String, Number>("High", highPrice2));
+		stock_2.getData().add(new XYChart.Data<String, Number>("Low", lowPrice2));
+		stock_2.getData().add(new XYChart.Data<String, Number>("Close", closePrice2));
+		//stock2.getData().add(new XYChart.Data<String, Number>("Friday", 200));
+		stock_2.setName(stockInput2);
+		
+		lineChart.getData().addAll(stock_1, stock_2);
+		
+		// Handler involved in checking for click events in graph
+		for (final XYChart.Data<String, Number> data:stock_1.getData()) {
+			data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+				@Override
+				public void handle (MouseEvent event) {
+					lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+					Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+				}
+			});
+		}
+		
+		for (final XYChart.Data<String, Number> data:stock_2.getData()) {
+			data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+				@Override
+				public void handle (MouseEvent event) {
+					lbl.setText(data.getXValue() + ": " + String.valueOf(data.getYValue()));
+					Tooltip.install(data.getNode(), new Tooltip(data.getXValue() + ": " + String.valueOf(data.getYValue())));
+				}
+			});
+		}
 	}
 }
